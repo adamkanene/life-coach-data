@@ -117,6 +117,15 @@
     font-size:11.5px; font-weight:700;
   }
 
+  .type-tag{
+    display:inline-block; padding:4px 10px; border-radius:999px;
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .type-strength{ background:rgba(34,197,94,0.12); color:var(--accent); border:1px solid rgba(34,197,94,0.35); }
+  .type-cardio{ background:rgba(59,130,246,0.12); color:var(--accent2); border:1px solid rgba(59,130,246,0.35); }
+  .type-rest{ background:rgba(139,147,167,0.12); color:var(--muted); border:1px solid rgba(139,147,167,0.35); }
+
   .workout-item{
     display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--border); font-size:13.5px;
   }
@@ -142,9 +151,21 @@
     <div class="card" id="todayCard">
       <div class="empty"><span class="emoji">⏳</span>Loading today's data…</div>
     </div>
-    <div class="card" id="mealsCard" style="display:none;">
-      <div class="section-title" style="margin-bottom:8px;">Meals Logged Today</div>
-      <div id="mealsList"></div>
+  </section>
+
+  <!-- TRAINING -->
+  <section>
+    <div class="section-title">Training</div>
+    <div class="card" id="todayWorkoutCard" style="display:none;">
+      <div style="font-size:13px; font-weight:700; margin-bottom:10px;">Today's Workout</div>
+      <div id="todayWorkoutBody"></div>
+    </div>
+    <div class="card" id="trainingCard">
+      <div class="empty"><span class="emoji">🏋️</span>No workouts logged yet</div>
+    </div>
+    <div class="card" id="hrCard" style="display:none;">
+      <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Resting Heart Rate</div>
+      <div class="chart-wrap short"><canvas id="hrChart"></canvas></div>
     </div>
   </section>
 
@@ -169,23 +190,11 @@
     </div>
   </section>
 
-  <!-- SLEEP -->
+  <!-- MEALS LOGGED TODAY -->
   <section>
-    <div class="section-title">Sleep — Last 7 Days</div>
-    <div class="card" id="sleepCard">
-      <div class="empty"><span class="emoji">😴</span>No sleep data yet</div>
-    </div>
-  </section>
-
-  <!-- TRAINING -->
-  <section>
-    <div class="section-title">Training — This Week</div>
-    <div class="card" id="trainingCard">
-      <div class="empty"><span class="emoji">🏋️</span>No workouts logged yet</div>
-    </div>
-    <div class="card" id="hrCard" style="display:none;">
-      <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Resting Heart Rate</div>
-      <div class="chart-wrap short"><canvas id="hrChart"></canvas></div>
+    <div class="section-title">Meals Logged Today</div>
+    <div class="card" id="mealsCard" style="display:none;">
+      <div id="mealsList"></div>
     </div>
   </section>
 
@@ -214,10 +223,21 @@
     fat: '#f59e0b',
     weight: '#3b82f6',
     weightMA: '#22c55e',
-    sleep: '#3b82f6',
-    sleepRef: '#f59e0b',
     hr: '#ef4444'
   };
+
+  const PHASE_NAMES = {
+    base_bulk: 'Lean Bulk',
+    aggressive_bulk: 'Bulk',
+    shred: 'Cut',
+    summer_maintain: 'Maintenance'
+  };
+
+  function phaseDisplayName(key){
+    if(!key) return '';
+    if(PHASE_NAMES[key]) return PHASE_NAMES[key];
+    return String(key).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
 
   Chart.defaults.color = '#8b93a7';
   Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, sans-serif";
@@ -264,6 +284,12 @@
     return d.toLocaleDateString(undefined, {weekday:'short'});
   }
 
+  const WEEKDAY_KEYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function todayWeekdayKey(){
+    return WEEKDAY_KEYS[new Date().getDay()];
+  }
+
   function startOfWeekStr(){
     // Monday as start of week
     const d = new Date();
@@ -291,19 +317,20 @@
   function clampPct(v, t){ if(!t) return 0; return Math.min(100, Math.max(0, (v/t)*100)); }
 
   async function init(){
-    const [profile, foodLog, weightLog, healthDaily] = await Promise.all([
+    const [profile, foodLog, weightLog, healthDaily, trainingPlan] = await Promise.all([
       fetchJSON('./data/profile.json', null),
       fetchJSON('./data/food-log.json', []),
       fetchJSON('./data/weight-log.json', []),
-      fetchJSON('./data/health-daily.json', [])
+      fetchJSON('./data/health-daily.json', []),
+      fetchJSON('./data/training-plan.json', null)
     ]);
 
     renderHeader(profile);
     renderToday(profile, foodLog);
+    renderTodayWorkout(trainingPlan);
+    renderTraining(healthDaily, trainingPlan);
     renderTrends(profile, foodLog);
     renderWeight(profile, weightLog);
-    renderSleep(healthDaily);
-    renderTraining(healthDaily);
 
     document.getElementById('lastUpdated').textContent =
       'Updated ' + new Date().toLocaleString(undefined, {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
@@ -329,7 +356,7 @@
     const wt = profile.weight_lb || (profile.athlete && profile.athlete.starting_weight_lb);
     if(age) sub += `${age}y`;
     if(wt) sub += (sub?' · ':'') + `${wt} lb`;
-    if(profile.current_phase) sub += (sub?' · ':'') + `Phase: ${profile.current_phase}`;
+    if(profile.current_phase) sub += (sub?' · ':'') + `Phase: ${phaseDisplayName(profile.current_phase)}`;
     if(phase && phase.window) sub += ` (${phase.window})`;
     subEl.textContent = sub || 'Welcome back';
   }
@@ -549,7 +576,7 @@
     if(profile && profile.current_phase && phase){
       phaseInfo = `
         <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
-          <span class="phase-tag">${profile.current_phase}${phase.window ? ' · ' + phase.window : ''}</span>
+          <span class="phase-tag">${phaseDisplayName(profile.current_phase)}${phase.window ? ' · ' + phase.window : ''}</span>
           ${(phase.rate_lb_per_wk || phase.weight_trend) ? `<span class="phase-tag" style="background:rgba(59,130,246,0.12); color:${CHART_COLORS.weightMA}; border-color:rgba(59,130,246,0.35);">Target: ${phase.rate_lb_per_wk ? phase.rate_lb_per_wk + ' lb/wk' : phase.weight_trend}</span>` : ''}
         </div>`;
     }
@@ -594,62 +621,67 @@
     });
   }
 
-  function renderSleep(healthDaily){
-    const card = document.getElementById('sleepCard');
-    const days = [];
-    for(let i=6; i>=0; i--) days.push(daysAgoStr(i));
+  function renderTodayWorkout(trainingPlan){
+    const card = document.getElementById('todayWorkoutCard');
+    const body = document.getElementById('todayWorkoutBody');
 
-    const byDay = {};
-    (healthDaily || []).forEach(h => { byDay[h.date] = h; });
-
-    const anyData = days.some(d => byDay[d] && byDay[d].sleep_hours != null);
-    if(!anyData){
-      card.innerHTML = `<div class="empty"><span class="emoji">😴</span>No sleep data yet</div>`;
+    if(!trainingPlan || !trainingPlan.week){
+      card.style.display = 'none';
       return;
     }
 
-    const labels = days.map(weekdayShort);
-    const data = days.map(d => byDay[d] && byDay[d].sleep_hours != null ? byDay[d].sleep_hours : null);
-    const avg = data.filter(v => v != null);
-    const avgVal = avg.length ? (avg.reduce((a,b)=>a+b,0)/avg.length).toFixed(1) : '—';
+    const key = todayWeekdayKey();
+    const day = trainingPlan.week[key];
 
-    card.innerHTML = `
-      <div class="grid3" style="margin-bottom:14px;">
-        <div class="stat-pill"><div class="num">${avgVal}h</div><div class="lbl">7d Avg</div></div>
-        <div class="stat-pill"><div class="num">${data[data.length-1] ?? '—'}h</div><div class="lbl">Last Night</div></div>
-        <div class="stat-pill"><div class="num">7h</div><div class="lbl">Target</div></div>
+    if(!day){
+      card.style.display = 'none';
+      return;
+    }
+
+    card.style.display = 'block';
+
+    const type = String(day.type || 'rest').toLowerCase();
+    const tagClass = type === 'strength' ? 'type-strength' : type === 'cardio' ? 'type-cardio' : 'type-rest';
+    const tagLabel = type.charAt(0).toUpperCase() + type.slice(1);
+    const exercises = day.exercises || [];
+
+    body.innerHTML = `
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; ${exercises.length ? 'margin-bottom:12px;' : ''}">
+        <div style="font-size:15px; font-weight:700;">${escapeHtml(day.focus || 'Rest')}</div>
+        <span class="type-tag ${tagClass}">${escapeHtml(tagLabel)}</span>
       </div>
-      <div class="chart-wrap"><canvas id="sleepChart"></canvas></div>
+      ${exercises.length ? `
+        <div>
+          ${exercises.map(ex => `
+            <div class="workout-item">
+              <div class="t">${escapeHtml(ex.name || '')}</div>
+              ${ex.scheme ? `<div class="m">${escapeHtml(ex.scheme)}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+      ${trainingPlan.notes ? `<div class="empty" style="padding:12px 0 0; text-align:left;">${escapeHtml(trainingPlan.notes)}</div>` : ''}
     `;
-
-    new Chart(document.getElementById('sleepChart'), {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'Sleep (hrs)',
-            data,
-            backgroundColor: data.map(v => v != null && v >= 7 ? CHART_COLORS.sleep : '#3b4258'),
-            borderRadius: 6,
-            barThickness: 26
-          },
-          {
-            type: 'line',
-            label: '7h target',
-            data: days.map(() => 7),
-            borderColor: CHART_COLORS.sleepRef,
-            borderDash: [5,5],
-            pointRadius: 0,
-            borderWidth: 1.5
-          }
-        ]
-      },
-      options: baseLineOptions()
-    });
   }
 
-  function renderTraining(healthDaily){
+  function classifyWorkout(type){
+    const cardioRe = /run|ride|bike|swim|walk|hike|row|elliptical|virtual/i;
+    return cardioRe.test(type || '') ? 'cardio' : 'strength';
+  }
+
+  function workoutItemHtml(w){
+    return `
+      <div class="workout-item">
+        <div>
+          <div class="t">${escapeHtml(w.type || 'Workout')}</div>
+          <div class="m">${weekdayShort(w.date)}</div>
+        </div>
+        <div class="m">${w.minutes ? w.minutes + ' min' : ''}${w.kcal ? ' · ' + Math.round(w.kcal) + ' kcal' : ''}</div>
+      </div>
+    `;
+  }
+
+  function renderTraining(healthDaily, trainingPlan){
     const card = document.getElementById('trainingCard');
     const weekStart = startOfWeekStr();
     const today = todayStr();
@@ -663,29 +695,38 @@
     if(workouts.length === 0){
       card.innerHTML = `<div class="empty"><span class="emoji">🏋️</span>No workouts logged this week</div>`;
     } else {
-      const sorted = [...workouts].sort((a,b) => a.date.localeCompare(b.date));
-      const count = sorted.length;
-      const targetCount = 4;
-      const pct = Math.min(100, (count/targetCount)*100);
+      const strength = workouts.filter(w => classifyWorkout(w.type) === 'strength').sort((a,b) => a.date.localeCompare(b.date));
+      const cardio = workouts.filter(w => classifyWorkout(w.type) === 'cardio').sort((a,b) => a.date.localeCompare(b.date));
+
+      const weeklyTargets = (trainingPlan && trainingPlan.weekly_targets) || {};
+      const strengthTarget = weeklyTargets.strength ?? 3;
+      const cardioTarget = weeklyTargets.cardio ?? 2;
+
+      const strengthPct = Math.min(100, (strength.length/strengthTarget)*100);
+      const cardioPct = Math.min(100, (cardio.length/cardioTarget)*100);
 
       card.innerHTML = `
+        <div class="macro-bar-row" style="margin-bottom:10px;">
+          <div class="top">
+            <span class="name">Strength</span>
+            <span class="nums">${strength.length} / ${strengthTarget}</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:${strengthPct}%; background:${CHART_COLORS.protein};"></div></div>
+        </div>
         <div class="macro-bar-row" style="margin-bottom:14px;">
           <div class="top">
-            <span class="name">This week's workouts</span>
-            <span class="nums">${count} / ${targetCount}</span>
+            <span class="name">Cardio</span>
+            <span class="nums">${cardio.length} / ${cardioTarget}</span>
           </div>
-          <div class="bar-track"><div class="bar-fill" style="width:${pct}%; background:${CHART_COLORS.protein};"></div></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${cardioPct}%; background:${CHART_COLORS.carbs};"></div></div>
         </div>
-        <div id="workoutList">
-          ${sorted.map(w => `
-            <div class="workout-item">
-              <div>
-                <div class="t">${escapeHtml(w.type || 'Workout')}</div>
-                <div class="m">${weekdayShort(w.date)}</div>
-              </div>
-              <div class="m">${w.minutes ? w.minutes + ' min' : ''}${w.kcal ? ' · ' + Math.round(w.kcal) + ' kcal' : ''}</div>
-            </div>
-          `).join('')}
+        <div class="section-title" style="margin-bottom:6px;">Strength</div>
+        <div>
+          ${strength.length ? strength.map(workoutItemHtml).join('') : `<div class="empty" style="padding:14px;">No strength workouts this week</div>`}
+        </div>
+        <div class="section-title" style="margin:14px 0 6px;">Cardio</div>
+        <div>
+          ${cardio.length ? cardio.map(workoutItemHtml).join('') : `<div class="empty" style="padding:14px;">No cardio workouts this week</div>`}
         </div>
       `;
     }
