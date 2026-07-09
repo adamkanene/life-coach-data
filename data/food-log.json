@@ -48,5 +48,15 @@
     "carbs_g": 22,
     "fat_g": 7,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-09",
+    "time": "09:45",
+    "description": "Naked Green Machine smoothie (8oz), 2 eggs, cottage cheese serving, vanilla latte (8oz milk + 2 espresso shots)",
+    "kcal": 570,
+    "protein_g": 35,
+    "carbs_g": 58,
+    "fat_g": 20,
+    "source": "claude-estimate"
   }
 ]
