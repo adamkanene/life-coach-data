@@ -1,1 +1,22 @@
-[{"date": "2026-07-08", "time": "19:30", "description": "6 oz salmon, half bag chopped Caesar salad kit, half container Bob Evans mashed potatoes", "kcal": 730, "protein_g": 47, "carbs_g": 32, "fat_g": 45, "source": "claude-estimate"}]
+[
+  {
+    "date": "2026-07-08",
+    "time": "19:30",
+    "description": "6 oz salmon, half bag chopped Caesar salad kit, half container Bob Evans mashed potatoes",
+    "kcal": 730,
+    "protein_g": 47,
+    "carbs_g": 32,
+    "fat_g": 45,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-08",
+    "time": "07:30",
+    "description": "2 eggs, 1.5 servings 2% Prairie Farms cottage cheese",
+    "kcal": 275,
+    "protein_g": 30,
+    "carbs_g": 9,
+    "fat_g": 14,
+    "source": "claude-estimate"
+  }
+]
