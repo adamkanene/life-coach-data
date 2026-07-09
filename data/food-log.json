@@ -38,5 +38,15 @@
     "carbs_g": 15,
     "fat_g": 8,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-08",
+    "time": "22:15",
+    "description": "Tollhouse soft frosted/iced cookie",
+    "kcal": 160,
+    "protein_g": 1,
+    "carbs_g": 22,
+    "fat_g": 7,
+    "source": "claude-estimate"
   }
 ]
