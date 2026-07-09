@@ -1,0 +1,40 @@
+name: Strava Sync
+
+on:
+  schedule:
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Strava sync
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python scripts/strava_sync.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "strava-sync-bot"
+          git config user.email "strava-sync-bot@users.noreply.github.com"
+          if git diff --quiet -- data/health-daily.json; then
+            echo "No changes to data/health-daily.json — skipping commit."
+          else
+            git add data/health-daily.json
+            git commit -m "Strava sync: update health-daily.json ($(date -u +%Y-%m-%d))"
+            git push
+          fi
