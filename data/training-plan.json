@@ -1,0 +1,46 @@
+{
+  "split": "Push / Pull / Legs + Cardio",
+  "weekly_targets": { "strength": 3, "cardio": 2 },
+  "notes": "Strength target rises to 4/wk in Sep 2026. Sauna anytime; cold plunge on cardio/rest days only (blunts hypertrophy within ~6h of lifting).",
+  "week": {
+    "Mon": { "focus": "Push A", "type": "strength", "exercises": [
+      { "name": "Barbell bench press", "scheme": "4 x 6-8" },
+      { "name": "Overhead press", "scheme": "3 x 8-10" },
+      { "name": "Incline DB press", "scheme": "3 x 8-12" },
+      { "name": "Lateral raise", "scheme": "3 x 12-15" },
+      { "name": "Triceps rope pushdown", "scheme": "3 x 10-12" }
+    ]},
+    "Tue": { "focus": "Pull", "type": "strength", "exercises": [
+      { "name": "Deadlift", "scheme": "3 x 5" },
+      { "name": "Pull-ups", "scheme": "4 x 6-10" },
+      { "name": "Barbell row", "scheme": "4 x 8-10" },
+      { "name": "Face pull", "scheme": "3 x 12-15" },
+      { "name": "DB curl", "scheme": "3 x 10-12" }
+    ]},
+    "Wed": { "focus": "Cardio — Zone 2", "type": "cardio", "exercises": [
+      { "name": "Swim, run, or bike (easy pace)", "scheme": "30-45 min" },
+      { "name": "Sauna + cold plunge OK today", "scheme": "" }
+    ]},
+    "Thu": { "focus": "Legs", "type": "strength", "exercises": [
+      { "name": "Back squat", "scheme": "4 x 6-8" },
+      { "name": "Romanian deadlift", "scheme": "3 x 8-10" },
+      { "name": "Leg press", "scheme": "3 x 10-12" },
+      { "name": "Standing calf raise", "scheme": "4 x 12-15" },
+      { "name": "Hanging leg raise", "scheme": "3 x 10-15" }
+    ]},
+    "Fri": { "focus": "Push B (optional until Sep)", "type": "strength", "exercises": [
+      { "name": "Incline barbell press", "scheme": "4 x 6-8" },
+      { "name": "Seated DB shoulder press", "scheme": "3 x 8-10" },
+      { "name": "Dips", "scheme": "3 x 8-12" },
+      { "name": "Cable fly", "scheme": "3 x 12-15" },
+      { "name": "Overhead triceps extension", "scheme": "3 x 10-12" }
+    ]},
+    "Sat": { "focus": "Cardio — Long", "type": "cardio", "exercises": [
+      { "name": "Longer swim, ride, or run", "scheme": "45-75 min" },
+      { "name": "Optional: pull accessories (curls, face pulls)", "scheme": "" }
+    ]},
+    "Sun": { "focus": "Rest", "type": "rest", "exercises": [
+      { "name": "Walk, stretch, sauna + cold plunge", "scheme": "" }
+    ]}
+  }
+}
