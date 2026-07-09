@@ -58,5 +58,15 @@
     "carbs_g": 58,
     "fat_g": 20,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-09",
+    "time": "14:15",
+    "description": "PB&J sandwich, 2 slices Domino's stuffed cheesy bread",
+    "kcal": 660,
+    "protein_g": 25,
+    "carbs_g": 73,
+    "fat_g": 29,
+    "source": "claude-estimate"
   }
 ]
