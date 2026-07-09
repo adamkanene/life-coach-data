@@ -316,8 +316,10 @@
     nameEl.textContent = profile.name ? `${profile.name}'s Dashboard` : 'Life Coach';
     const phase = getActivePhase(profile);
     let sub = '';
-    if(profile.age) sub += `${profile.age}y`;
-    if(profile.weight_lb) sub += (sub?' · ':'') + `${profile.weight_lb} lb`;
+    const age = profile.age || (profile.athlete && profile.athlete.age);
+    const wt = profile.weight_lb || (profile.athlete && profile.athlete.starting_weight_lb);
+    if(age) sub += `${age}y`;
+    if(wt) sub += (sub?' · ':'') + `${wt} lb`;
     if(profile.current_phase) sub += (sub?' · ':'') + `Phase: ${profile.current_phase}`;
     if(phase && phase.window) sub += ` (${phase.window})`;
     subEl.textContent = sub || 'Welcome back';
@@ -332,7 +334,7 @@
     if(!phase){
       card.innerHTML = `<div class="empty"><span class="emoji">🎯</span>No active phase/targets set in profile.json</div>`;
     } else {
-      const targets = phase.targets || {};
+      const targets = phase.targets || phase;
       const totals = todaysMeals.reduce((acc, m) => {
         acc.kcal += Number(m.kcal)||0;
         acc.protein_g += Number(m.protein_g)||0;
@@ -411,7 +413,7 @@
   function renderTrends(profile, foodLog){
     const days = last14Days();
     const phase = getActivePhase(profile);
-    const targets = phase ? phase.targets || {} : {};
+    const targets = phase ? (phase.targets || phase) : {};
 
     const byDay = {};
     (foodLog || []).forEach(m => {
@@ -539,7 +541,7 @@
       phaseInfo = `
         <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
           <span class="phase-tag">${profile.current_phase}${phase.window ? ' · ' + phase.window : ''}</span>
-          ${phase.rate_lb_per_wk ? `<span class="phase-tag" style="background:rgba(59,130,246,0.12); color:${CHART_COLORS.weightMA}; border-color:rgba(59,130,246,0.35);">Target: ${phase.rate_lb_per_wk} lb/wk</span>` : ''}
+          ${(phase.rate_lb_per_wk || phase.weight_trend) ? `<span class="phase-tag" style="background:rgba(59,130,246,0.12); color:${CHART_COLORS.weightMA}; border-color:rgba(59,130,246,0.35);">Target: ${phase.rate_lb_per_wk ? phase.rate_lb_per_wk + ' lb/wk' : phase.weight_trend}</span>` : ''}
         </div>`;
     }
 
