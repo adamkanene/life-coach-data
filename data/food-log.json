@@ -68,5 +68,15 @@
     "carbs_g": 73,
     "fat_g": 29,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-09",
+    "time": "23:00",
+    "description": "Smalls Sliders 2 burgers, half medium fry, water, 10oz chocolate milk, AllMax 100% Whey 30g shake",
+    "kcal": 1070,
+    "protein_g": 60,
+    "carbs_g": 99,
+    "fat_g": 48,
+    "source": "claude-estimate"
   }
 ]
