@@ -78,5 +78,15 @@
     "carbs_g": 99,
     "fat_g": 48,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-10",
+    "time": "09:44",
+    "description": "2 eggs, 1 slice sourdough toast, Starbucks grande vanilla latte",
+    "kcal": 480,
+    "protein_g": 27,
+    "carbs_g": 54,
+    "fat_g": 18,
+    "source": "claude-estimate"
   }
 ]
