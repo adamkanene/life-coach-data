@@ -98,5 +98,15 @@
     "carbs_g": 3,
     "fat_g": 9,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-19",
+    "time": "13:00",
+    "description": "15 pieces tuna/salmon sushi, 8oz Fairlife chocolate milk mixed with AllMax 100% Whey 30g",
+    "kcal": 945,
+    "protein_g": 97,
+    "carbs_g": 117,
+    "fat_g": 19,
+    "source": "claude-estimate"
   }
 ]
