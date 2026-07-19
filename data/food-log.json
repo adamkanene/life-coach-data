@@ -88,5 +88,15 @@
     "carbs_g": 54,
     "fat_g": 18,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-19",
+    "time": "11:11",
+    "description": "1 egg, 2 light string cheese sticks, Starbucks cold brew (black)",
+    "kcal": 175,
+    "protein_g": 18,
+    "carbs_g": 3,
+    "fat_g": 9,
+    "source": "claude-estimate"
   }
 ]
