@@ -163,6 +163,10 @@
     <div class="card" id="trainingCard">
       <div class="empty"><span class="emoji">🏋️</span>No workouts logged yet</div>
     </div>
+    <div class="card" id="liftCard">
+      <div style="font-size:13px; font-weight:700; margin-bottom:10px;">Strength Progression</div>
+      <div id="liftBody"></div>
+    </div>
     <div class="card" id="hrCard" style="display:none;">
       <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Resting Heart Rate</div>
       <div class="chart-wrap short"><canvas id="hrChart"></canvas></div>
@@ -223,8 +227,15 @@
     fat: '#f59e0b',
     weight: '#3b82f6',
     weightMA: '#22c55e',
-    hr: '#ef4444'
+    hr: '#ef4444',
+    bench: '#22c55e',
+    squat: '#3b82f6',
+    deadlift: '#a78bfa',
+    ohp: '#f59e0b'
   };
+
+  const MAIN_LIFTS = ['bench', 'squat', 'deadlift', 'ohp'];
+  const LIFT_LABELS = {bench: 'Bench', squat: 'Squat', deadlift: 'Deadlift', ohp: 'OHP'};
 
   const PHASE_NAMES = {
     base_bulk: 'Lean Bulk',
@@ -317,18 +328,20 @@
   function clampPct(v, t){ if(!t) return 0; return Math.min(100, Math.max(0, (v/t)*100)); }
 
   async function init(){
-    const [profile, foodLog, weightLog, healthDaily, trainingPlan] = await Promise.all([
+    const [profile, foodLog, weightLog, healthDaily, trainingPlan, liftLog] = await Promise.all([
       fetchJSON('./data/profile.json', null),
       fetchJSON('./data/food-log.json', []),
       fetchJSON('./data/weight-log.json', []),
       fetchJSON('./data/health-daily.json', []),
-      fetchJSON('./data/training-plan.json', null)
+      fetchJSON('./data/training-plan.json', null),
+      fetchJSON('./data/lift-log.json', [])
     ]);
 
     renderHeader(profile);
     renderToday(profile, foodLog);
     renderTodayWorkout(trainingPlan);
     renderTraining(healthDaily, trainingPlan);
+    renderLifts(liftLog);
     renderTrends(profile, foodLog);
     renderWeight(profile, weightLog);
 
@@ -769,6 +782,108 @@
     } else {
       hrCard.style.display = 'none';
     }
+  }
+
+  function epley(weight, reps){
+    return Math.round((Number(weight) || 0) * (1 + (Number(reps) || 0) / 30));
+  }
+
+  function subtractDaysStr(dstr, n){
+    const d = new Date(dstr + 'T00:00:00');
+    d.setDate(d.getDate() - n);
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
+
+  function renderLifts(liftLog){
+    const body = document.getElementById('liftBody');
+    const log = liftLog || [];
+
+    if(log.length === 0){
+      body.innerHTML = `<div class="empty"><span class="emoji">💪</span>No lifts logged yet — text your coach "bench 185x8"</div>`;
+      return;
+    }
+
+    const cutoff = daysAgoStr(90);
+    const recent = log.filter(r => r && r.date >= cutoff);
+
+    // Best (max) e1RM per exercise per date
+    const byExerciseDate = {};
+    recent.forEach(r => {
+      const ex = String(r.exercise || '').toLowerCase();
+      if(!ex || !r.date) return;
+      const e1rm = epley(r.weight_lb, r.reps);
+      if(!byExerciseDate[ex]) byExerciseDate[ex] = {};
+      if(byExerciseDate[ex][r.date] == null || e1rm > byExerciseDate[ex][r.date]){
+        byExerciseDate[ex][r.date] = e1rm;
+      }
+    });
+
+    const presentMainLifts = MAIN_LIFTS.filter(ex => byExerciseDate[ex] && Object.keys(byExerciseDate[ex]).length);
+
+    if(presentMainLifts.length === 0){
+      body.innerHTML = `<div class="empty"><span class="emoji">💪</span>No lifts logged yet — text your coach "bench 185x8"</div>`;
+      return;
+    }
+
+    const allDatesSet = new Set();
+    presentMainLifts.forEach(ex => Object.keys(byExerciseDate[ex]).forEach(d => allDatesSet.add(d)));
+    const allDates = [...allDatesSet].sort();
+    const labels = allDates.map(fmtDateShort);
+
+    const pillsHtml = presentMainLifts.map(ex => {
+      const dates = Object.keys(byExerciseDate[ex]).sort();
+      const latestDate = dates[dates.length - 1];
+      const current = byExerciseDate[ex][latestDate];
+
+      const targetDate = subtractDaysStr(latestDate, 30);
+      const priorDates = dates.filter(d => d <= targetDate);
+      let deltaHtml = '';
+      if(priorDates.length){
+        const priorDate = priorDates[priorDates.length - 1];
+        const prior = byExerciseDate[ex][priorDate];
+        const delta = current - prior;
+        if(delta > 0){
+          deltaHtml = `<div style="font-size:11px; margin-top:2px; color:${CHART_COLORS.protein};">▲ ${delta}</div>`;
+        } else if(delta < 0){
+          deltaHtml = `<div style="font-size:11px; margin-top:2px; color:var(--bad);">▼ ${Math.abs(delta)}</div>`;
+        } else {
+          deltaHtml = `<div style="font-size:11px; margin-top:2px; color:var(--muted);">— 0</div>`;
+        }
+      }
+
+      return `
+        <div class="stat-pill" style="flex:1; min-width:80px;">
+          <div class="num">${current}</div>
+          <div class="lbl">${escapeHtml(LIFT_LABELS[ex])} e1RM</div>
+          ${deltaHtml}
+        </div>
+      `;
+    }).join('');
+
+    body.innerHTML = `
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">${pillsHtml}</div>
+      <div class="chart-wrap tall"><canvas id="liftChart"></canvas></div>
+    `;
+
+    const datasets = presentMainLifts.map(ex => ({
+      label: LIFT_LABELS[ex],
+      data: allDates.map(d => byExerciseDate[ex][d] != null ? byExerciseDate[ex][d] : null),
+      borderColor: CHART_COLORS[ex],
+      backgroundColor: CHART_COLORS[ex] + '33',
+      fill: false,
+      tension: 0.3,
+      spanGaps: true,
+      pointRadius: 2.5
+    }));
+
+    new Chart(document.getElementById('liftChart'), {
+      type: 'line',
+      data: { labels, datasets },
+      options: baseLineOptions()
+    });
   }
 
   init();
