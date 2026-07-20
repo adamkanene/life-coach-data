@@ -108,5 +108,15 @@
     "carbs_g": 117,
     "fat_g": 19,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-19",
+    "time": "21:55",
+    "description": "Hakata ramen with 2 slices pork belly and soft boiled egg, 2 Bubbies Mochi ice creams",
+    "kcal": 960,
+    "protein_g": 36,
+    "carbs_g": 97,
+    "fat_g": 43,
+    "source": "claude-estimate"
   }
 ]
