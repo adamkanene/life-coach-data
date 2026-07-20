@@ -118,5 +118,15 @@
     "carbs_g": 97,
     "fat_g": 43,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-20",
+    "time": "08:43",
+    "description": "2 eggs, Oikos Pro Vanilla Greek yogurt, 8oz Naked Green Machine smoothie",
+    "kcal": 440,
+    "protein_g": 39,
+    "carbs_g": 42,
+    "fat_g": 12,
+    "source": "claude-estimate"
   }
 ]
