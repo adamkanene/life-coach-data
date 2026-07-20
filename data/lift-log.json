@@ -16,5 +16,11 @@
     "exercise": "lateral raise",
     "weight_lb": 25,
     "reps": 12
+  },
+  {
+    "date": "2026-07-19",
+    "exercise": "skullcrusher",
+    "weight_lb": 55,
+    "reps": 10
   }
 ]
