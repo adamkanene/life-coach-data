@@ -133,10 +133,10 @@
     "date": "2026-07-20",
     "time": "12:30",
     "description": "Chicken Alfredo: 8oz chicken, 1.5 cups farfalle, alfredo sauce, broccoli",
-    "kcal": 975,
-    "protein_g": 71,
+    "kcal": 745,
+    "protein_g": 66,
     "carbs_g": 76,
-    "fat_g": 41,
+    "fat_g": 19,
     "source": "claude-estimate"
   }
 ]
