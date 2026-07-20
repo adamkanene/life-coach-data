@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-07-19",
+    "exercise": "bench",
+    "weight_lb": 165,
+    "reps": 5
+  },
+  {
+    "date": "2026-07-19",
+    "exercise": "chest press machine",
+    "weight_lb": 145,
+    "reps": 10
+  },
+  {
+    "date": "2026-07-19",
+    "exercise": "lateral raise",
+    "weight_lb": 25,
+    "reps": 12
+  }
+]
