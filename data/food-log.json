@@ -138,5 +138,15 @@
     "carbs_g": 76,
     "fat_g": 19,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-20",
+    "time": "19:00",
+    "description": "8oz chicken, Knorr pasta side packet (~450 kcal)",
+    "kcal": 715,
+    "protein_g": 60,
+    "carbs_g": 65,
+    "fat_g": 21,
+    "source": "claude-estimate"
   }
 ]
