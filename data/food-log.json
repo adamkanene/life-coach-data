@@ -148,5 +148,15 @@
     "carbs_g": 65,
     "fat_g": 21,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-20",
+    "time": "20:30",
+    "description": "Protein shake: 8oz Fairlife chocolate milk + AllMax 100% Whey 30g",
+    "kcal": 270,
+    "protein_g": 37,
+    "carbs_g": 27,
+    "fat_g": 4,
+    "source": "claude-estimate"
   }
 ]
