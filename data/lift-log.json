@@ -46,5 +46,23 @@
     "exercise": "shrug",
     "weight_lb": 60,
     "reps": 10
+  },
+  {
+    "date": "2026-07-21",
+    "exercise": "squat",
+    "weight_lb": 165,
+    "reps": 8
+  },
+  {
+    "date": "2026-07-21",
+    "exercise": "leg press",
+    "weight_lb": 225,
+    "reps": 10
+  },
+  {
+    "date": "2026-07-21",
+    "exercise": "quad extension",
+    "weight_lb": 125,
+    "reps": 10
   }
 ]
