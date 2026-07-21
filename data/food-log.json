@@ -168,5 +168,15 @@
     "carbs_g": 34,
     "fat_g": 5,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-21",
+    "time": "10:00",
+    "description": "Post-gym protein shake: 9oz Fairlife chocolate milk + 1 scoop protein powder (30g protein)",
+    "kcal": 290,
+    "protein_g": 45,
+    "carbs_g": 30,
+    "fat_g": 4,
+    "source": "claude-estimate"
   }
 ]
