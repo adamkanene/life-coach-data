@@ -158,5 +158,15 @@
     "carbs_g": 27,
     "fat_g": 4,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-21",
+    "time": "08:02",
+    "description": "Pre-gym breakfast: banana, latte with 5oz whole milk",
+    "kcal": 200,
+    "protein_g": 6,
+    "carbs_g": 34,
+    "fat_g": 5,
+    "source": "claude-estimate"
   }
 ]
