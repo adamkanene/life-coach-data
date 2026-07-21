@@ -22,5 +22,29 @@
     "exercise": "skullcrusher",
     "weight_lb": 55,
     "reps": 10
+  },
+  {
+    "date": "2026-07-20",
+    "exercise": "lat pulldown",
+    "weight_lb": 230,
+    "reps": 10
+  },
+  {
+    "date": "2026-07-20",
+    "exercise": "cable row",
+    "weight_lb": 50,
+    "reps": 10
+  },
+  {
+    "date": "2026-07-20",
+    "exercise": "bicep curl",
+    "weight_lb": 40,
+    "reps": 14
+  },
+  {
+    "date": "2026-07-20",
+    "exercise": "shrug",
+    "weight_lb": 60,
+    "reps": 10
   }
 ]
