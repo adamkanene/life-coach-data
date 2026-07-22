@@ -208,5 +208,25 @@
     "carbs_g": 82,
     "fat_g": 17,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-22",
+    "time": "08:00",
+    "description": "2 eggs, Oikos Pro Vanilla Greek yogurt",
+    "kcal": 300,
+    "protein_g": 37,
+    "carbs_g": 10,
+    "fat_g": 12,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-22",
+    "time": "12:30",
+    "description": "Full PB&J sandwich",
+    "kcal": 380,
+    "protein_g": 13,
+    "carbs_g": 45,
+    "fat_g": 17,
+    "source": "claude-estimate"
   }
 ]
