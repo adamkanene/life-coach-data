@@ -178,5 +178,35 @@
     "carbs_g": 30,
     "fat_g": 4,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-21",
+    "time": "12:30",
+    "description": "Angel hair pasta 5oz uncooked, 0.32lb chicken, broccoli",
+    "kcal": 750,
+    "protein_g": 62,
+    "carbs_g": 108,
+    "fat_g": 8,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-21",
+    "time": "16:00",
+    "description": "Half PB sandwich, Berry Farms 2% cottage cheese serving",
+    "kcal": 280,
+    "protein_g": 19,
+    "carbs_g": 27,
+    "fat_g": 11,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-07-21",
+    "time": "19:00",
+    "description": "0.5 cup uncooked jasmine rice, 0.32lb chicken, green beans, butter",
+    "kcal": 707,
+    "protein_g": 52,
+    "carbs_g": 82,
+    "fat_g": 17,
+    "source": "claude-estimate"
   }
 ]
