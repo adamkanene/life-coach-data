@@ -228,5 +228,15 @@
     "carbs_g": 45,
     "fat_g": 17,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-08-24",
+    "time": "10:53",
+    "description": "2 eggs, Prairie Farms 2% small curd cottage cheese (standard serving), iced vanilla latte",
+    "kcal": 480,
+    "protein_g": 36,
+    "carbs_g": 40,
+    "fat_g": 20,
+    "source": "claude-estimate"
   }
 ]
