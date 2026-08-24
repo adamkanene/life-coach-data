@@ -64,5 +64,11 @@
     "exercise": "quad extension",
     "weight_lb": 125,
     "reps": 10
+  },
+  {
+    "date": "2026-08-24",
+    "exercise": "bench",
+    "weight_lb": 175,
+    "reps": 4
   }
 ]
