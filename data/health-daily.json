@@ -170,5 +170,25 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-08-24",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "WeightTraining",
+        "minutes": 46,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 101,
+        "strava_id": 19885398860
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]
