@@ -248,5 +248,15 @@
     "carbs_g": 32,
     "fat_g": 13,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-08-23",
+    "time": "19:00",
+    "description": "1/4 large Imo's pizza (pepperoni & sausage), 3 buffalo boneless wings, house salad",
+    "kcal": 1170,
+    "protein_g": 53,
+    "carbs_g": 96,
+    "fat_g": 63,
+    "source": "claude-estimate"
   }
 ]
