@@ -238,5 +238,45 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-08-27",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "WeightTraining",
+        "minutes": 49,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 105,
+        "strava_id": 19951501434
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
+  },
+  {
+    "date": "2026-08-29",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Tennis",
+        "minutes": 97,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 150,
+        "strava_id": 19951501336
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]
