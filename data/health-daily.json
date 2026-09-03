@@ -306,5 +306,61 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-09-01",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Ride",
+        "minutes": 8,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 116,
+        "strava_id": 20013528188
+      },
+      {
+        "type": "WeightTraining",
+        "minutes": 39,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 119,
+        "strava_id": 20013528094
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
+  },
+  {
+    "date": "2026-09-02",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Run",
+        "minutes": 24,
+        "kcal": null,
+        "distance_km": 3.23,
+        "avg_hr": 154,
+        "strava_id": 20012641064
+      },
+      {
+        "type": "WeightTraining",
+        "minutes": 44,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 108,
+        "strava_id": 20013523013
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]
