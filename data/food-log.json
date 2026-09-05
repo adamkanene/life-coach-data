@@ -268,5 +268,15 @@
     "carbs_g": 34,
     "fat_g": 13,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-09-05",
+    "time": "06:14",
+    "description": "Bagel with 1 tbsp cream cheese",
+    "kcal": 330,
+    "protein_g": 11,
+    "carbs_g": 56,
+    "fat_g": 7,
+    "source": "claude-estimate"
   }
 ]
