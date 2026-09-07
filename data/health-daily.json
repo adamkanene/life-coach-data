@@ -390,5 +390,25 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-09-06",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Run",
+        "minutes": 21,
+        "kcal": null,
+        "distance_km": 3.05,
+        "avg_hr": 158,
+        "strava_id": 20061594205
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]
