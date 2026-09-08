@@ -278,5 +278,15 @@
     "carbs_g": 56,
     "fat_g": 7,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-09-08",
+    "time": "17:01",
+    "description": "Banana, 2 eggs, Naked Green Machine smoothie, cottage cheese serving, PB&J sandwich, Knorr pasta packet",
+    "kcal": 1305,
+    "protein_g": 50,
+    "carbs_g": 174,
+    "fat_g": 45,
+    "source": "claude-estimate"
   }
 ]
