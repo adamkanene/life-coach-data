@@ -426,6 +426,14 @@
         "distance_km": 3.23,
         "avg_hr": 149,
         "strava_id": 20088160161
+      },
+      {
+        "type": "WeightTraining",
+        "minutes": 65,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 107,
+        "strava_id": 20095778462
       }
     ],
     "resting_hr": null,
