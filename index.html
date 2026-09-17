@@ -333,7 +333,7 @@
       fetchJSON('./data/food-log.json', []),
       fetchJSON('./data/weight-log.json', []),
       fetchJSON('./data/health-daily.json', []),
-      fetchJSON('./data/training-plan.json', null),
+      fetchJSON('./data/training-plan.json', null).then(async p => { const o = await fetchJSON('./data/daily-overrides.json', {}); const d = new Date(), k = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; if(p && o && o[k]){ p.week[todayWeekdayKey()] = o[k]; if(o[k].notes) p.notes = o[k].notes; } return p; }),
       fetchJSON('./data/lift-log.json', [])
     ]);
 
