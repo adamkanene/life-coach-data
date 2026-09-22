@@ -606,5 +606,33 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-09-21",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Run",
+        "minutes": 9,
+        "kcal": null,
+        "distance_km": 1.5,
+        "avg_hr": 157,
+        "strava_id": 20273776481
+      },
+      {
+        "type": "WeightTraining",
+        "minutes": 44,
+        "kcal": null,
+        "distance_km": null,
+        "avg_hr": 115,
+        "strava_id": 20274208765
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]
