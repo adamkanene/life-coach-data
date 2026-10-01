@@ -288,5 +288,15 @@
     "carbs_g": 174,
     "fat_g": 45,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-01",
+    "time": "08:35",
+    "description": "2 eggs, Prairie Farms 2% small curd cottage cheese serving, Naked Green Machine smoothie",
+    "kcal": 370,
+    "protein_g": 26,
+    "carbs_g": 37,
+    "fat_g": 13,
+    "source": "claude-estimate"
   }
 ]
