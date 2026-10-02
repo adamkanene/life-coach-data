@@ -1,1 +1,16 @@
-{}
+{
+  "2026-10-02": {
+    "focus": "Squatober Day 2 — Bending in a Polo",
+    "type": "strength",
+    "notes": "Back squat at 62% — belt off, all 32 reps identical with depth that leaves no doubt. 2 min rest between sets; 90 sec between Zercher sets, 60 sec between carries. Warm up: 5 jumping jacks + 5 pushups, repeat as needed. Recovery: extra meaty pot roast, 30 min walk, 8+ hrs sleep. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "Back squat", "scheme": "4 sets of 8 reps 62%" },
+      { "name": "Seated DB shoulder press (superset a)", "scheme": "4 sets of 10 reps" },
+      { "name": "Slow strict chin ups (superset b)", "scheme": "4 sets of 3-5 reps" },
+      { "name": "DB Bulgarian split squats (superset a)", "scheme": "3 sets of 5 reps each leg" },
+      { "name": "DB RDL's (superset b)", "scheme": "3 sets of 5 reps" },
+      { "name": "Zercher squats (cardio)", "scheme": "2 sets of 10 reps" },
+      { "name": "DB or KB farmers carry (cardio)", "scheme": "4 sets of 20 yds" }
+    ]
+  }
+}
