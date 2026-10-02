@@ -298,5 +298,25 @@
     "carbs_g": 37,
     "fat_g": 13,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-01",
+    "time": "12:30",
+    "description": "Pork chops 0.38lb, Bob Evans mashed potatoes 2.5 servings, corn",
+    "kcal": 785,
+    "protein_g": 55,
+    "carbs_g": 79,
+    "fat_g": 28,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-01",
+    "time": "18:30",
+    "description": "Chick-fil-A spicy chicken sandwich with ranch, medium waffle fries, Powerade, 3 grilled nuggets",
+    "kcal": 1175,
+    "protein_g": 39,
+    "carbs_g": 123,
+    "fat_g": 59,
+    "source": "claude-estimate"
   }
 ]
