@@ -328,5 +328,15 @@
     "carbs_g": 33,
     "fat_g": 4,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-02",
+    "time": "07:38",
+    "description": "2 cups black coffee, blueberry bagel with cream cheese, banana",
+    "kcal": 500,
+    "protein_g": 13,
+    "carbs_g": 87,
+    "fat_g": 12,
+    "source": "claude-estimate"
   }
 ]
