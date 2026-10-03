@@ -12,5 +12,16 @@
       { "name": "Zercher squats (cardio)", "scheme": "2 sets of 10 reps" },
       { "name": "DB or KB farmers carry (cardio)", "scheme": "4 sets of 20 yds" }
     ]
+  },
+  "2026-10-04": {
+    "focus": "Squatober Day 4 — The Weekend (rest & recovery)",
+    "type": "rest",
+    "notes": "Rest day. Resting, walking and eating are high priority — there are still some things to actively do to stay on track with the plan. 5 days of strength training is on deck for week 2. Be ready. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "30 min walk", "scheme": "30 min" },
+      { "name": "Grill or Cook Something", "scheme": "—" },
+      { "name": "Take a nap", "scheme": "—" },
+      { "name": "Great mindset for new week", "scheme": "—" }
+    ]
   }
 }
