@@ -21,3 +21,16 @@ Each entry below is the workout **as prescribed by Sorinex**, captured the eveni
 Warm up with 5 jumping jacks and 5 pushups, repeating as needed. 2 min rest between sets, 90 sec between Zercher sets and 60 sec between carries; at 62% the belt gets the day off, and all 32 squat reps should look identical with depth that leaves no doubt. Recovery: extra meaty pot roast, 30 min walk, sleep 8+ hrs.
 
 Source: @sorinex_squatober, posted October 1, 2026
+
+## Day 4 — Sunday, October 4, 2026 — The Weekend (Rest & Recovery)
+
+| Exercise | Scheme |
+| --- | --- |
+| 30 min walk | 30 min |
+| Grill or Cook Something | — |
+| Take a nap | — |
+| Great mindset for new week | — |
+
+Rest day: resting, walking and eating are high priority, and there are still some things to actively do to stay on track with the plan. 5 days of Strength Training is on deck for week 2 — be ready.
+
+Source: @sorinex_squatober, posted October 3, 2026
