@@ -358,5 +358,15 @@
     "carbs_g": 59,
     "fat_g": 17,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-05",
+    "time": "15:00",
+    "description": "Banana, Rice Krispy treat, ~100 cal assorted nuts",
+    "kcal": 295,
+    "protein_g": 5,
+    "carbs_g": 49,
+    "fat_g": 11,
+    "source": "claude-estimate"
   }
 ]
