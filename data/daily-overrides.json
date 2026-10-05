@@ -23,5 +23,19 @@
       { "name": "Take a nap", "scheme": "—" },
       { "name": "Great mindset for new week", "scheme": "—" }
     ]
+  },
+  "2026-10-05": {
+    "focus": "Squatober Day 5 — Never Miss a Monday",
+    "type": "strength",
+    "notes": "2 min rest between back squat sets; 2 1/2 min between bench sets; 2 min between row/lateral-raise superset rounds; 60 sec between warm-up carries and cardio sets. Increase weight each carry set. Bench burnout set at 85% — if you get 4 or less reps, lower your bench max 5%; 8 or more reps, raise it 3%. Slow the tempo on the pushups to make them more challenging. Recovery: sloppy joes and tator tots, 30 min walk, deep heavy sleep. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "KB or DB farmer's carry (warm up)", "scheme": "4 x 20 yds" },
+      { "name": "Back squat", "scheme": "5 reps @ 70%, 73%, 75%, 77%, 80%" },
+      { "name": "Bench press", "scheme": "3 reps @ 70%, 75%, 80% + burnout set @ 85%" },
+      { "name": "BB bent over rows (superset a)", "scheme": "4 sets of 5 reps" },
+      { "name": "DB lateral raises (superset b)", "scheme": "4 sets of 15 reps" },
+      { "name": "KB swings (cardio superset a)", "scheme": "4 sets of 10 reps" },
+      { "name": "Close grip pushups (cardio superset b)", "scheme": "4 sets of 8-12 reps" }
+    ]
   }
 }
