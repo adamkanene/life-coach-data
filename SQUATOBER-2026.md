@@ -34,3 +34,19 @@ Source: @sorinex_squatober, posted October 1, 2026
 Rest day: resting, walking and eating are high priority, and there are still some things to actively do to stay on track with the plan. 5 days of Strength Training is on deck for week 2 — be ready.
 
 Source: @sorinex_squatober, posted October 3, 2026
+
+## Day 5 — Monday, October 5, 2026 — Never Miss a Monday
+
+| Exercise | Scheme |
+| --- | --- |
+| KB or DB Farmer's Carry (warm up) | 4 x 20 yds |
+| Back squat | 5 reps @ 70%, 73%, 75%, 77%, 80% |
+| Bench press | 3 reps @ 70%, 75%, 80% + burnout set @ 85% |
+| BB Bent Over Rows (superset a) | 4 sets of 5 reps |
+| DB Lateral Raises (superset b) | 4 sets of 15 reps |
+| KB Swings (cardio superset a) | 4 sets of 10 reps |
+| Close Grip Pushups (cardio superset b) | 4 sets of 8-12 reps |
+
+Increase the weight on each warm-up carry set, 60 sec rest between them. 2 min rest between back squat sets, 2 1/2 min between bench sets, 2 min between the row and lateral raise superset rounds, 60 sec between cardio sets. On the bench burnout set at 85%: 4 or less reps, lower your bench max 5%; 8 or more reps, raise it 3%. Slow down the tempo on the pushups if you want to make them more challenging. Recovery: sloppy joes and tator tots, 30 min walk, deep heavy sleep.
+
+Source: @sorinex_squatober, posted October 4, 2026
