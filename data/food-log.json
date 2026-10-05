@@ -348,5 +348,15 @@
     "carbs_g": 55,
     "fat_g": 20,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-05",
+    "time": "12:30",
+    "description": "PB&J on 2 slices white bread, Oikos Triple Zero yogurt (15g protein)",
+    "kcal": 500,
+    "protein_g": 28,
+    "carbs_g": 59,
+    "fat_g": 17,
+    "source": "claude-estimate"
   }
 ]
