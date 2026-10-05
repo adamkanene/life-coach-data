@@ -338,5 +338,15 @@
     "carbs_g": 87,
     "fat_g": 12,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-05",
+    "time": "10:43",
+    "description": "2 eggs, cottage cheese serving, Naked Green Machine smoothie, latte",
+    "kcal": 560,
+    "protein_g": 36,
+    "carbs_g": 55,
+    "fat_g": 20,
+    "source": "claude-estimate"
   }
 ]
