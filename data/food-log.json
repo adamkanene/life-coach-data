@@ -398,5 +398,25 @@
     "carbs_g": 40,
     "fat_g": 20,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-06",
+    "time": "13:00",
+    "description": "Pasta ~3 servings (~600 kcal), 0.5lb chicken, vodka sauce",
+    "kcal": 1165,
+    "protein_g": 75,
+    "carbs_g": 144,
+    "fat_g": 31,
+    "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-06",
+    "time": "15:30",
+    "description": "Banana, Rice Krispy treat",
+    "kcal": 195,
+    "protein_g": 2,
+    "carbs_g": 45,
+    "fat_g": 2,
+    "source": "claude-estimate"
   }
 ]
