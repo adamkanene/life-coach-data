@@ -378,5 +378,15 @@
     "carbs_g": 144,
     "fat_g": 31,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-05",
+    "time": "21:00",
+    "description": "Protein shake: 10oz chocolate milk + protein powder scoop (30g protein)",
+    "kcal": 310,
+    "protein_g": 46,
+    "carbs_g": 33,
+    "fat_g": 4,
+    "source": "claude-estimate"
   }
 ]
