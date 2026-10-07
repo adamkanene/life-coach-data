@@ -448,5 +448,15 @@
     "carbs_g": 25,
     "fat_g": 17,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-07",
+    "time": "13:00",
+    "description": "Half serving pasta/chicken/vodka sauce leftover dish, PB&J on 2 slices white bread",
+    "kcal": 965,
+    "protein_g": 51,
+    "carbs_g": 117,
+    "fat_g": 33,
+    "source": "claude-estimate"
   }
 ]
