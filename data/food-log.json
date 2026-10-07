@@ -418,5 +418,15 @@
     "carbs_g": 45,
     "fat_g": 2,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-06",
+    "time": "19:00",
+    "description": "Pasta ~3 servings (~600 kcal), 0.5lb chicken, vodka sauce",
+    "kcal": 1165,
+    "protein_g": 75,
+    "carbs_g": 144,
+    "fat_g": 31,
+    "source": "claude-estimate"
   }
 ]
