@@ -438,5 +438,15 @@
     "carbs_g": 31,
     "fat_g": 5,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-10-07",
+    "time": "11:29",
+    "description": "2 eggs, cottage cheese serving, Starbucks Iced Brown Sugar Shaken Espresso",
+    "kcal": 370,
+    "protein_g": 26,
+    "carbs_g": 25,
+    "fat_g": 17,
+    "source": "claude-estimate"
   }
 ]
