@@ -50,3 +50,17 @@ Source: @sorinex_squatober, posted October 3, 2026
 Increase the weight on each warm-up carry set, 60 sec rest between them. 2 min rest between back squat sets, 2 1/2 min between bench sets, 2 min between the row and lateral raise superset rounds, 60 sec between cardio sets. On the bench burnout set at 85%: 4 or less reps, lower your bench max 5%; 8 or more reps, raise it 3%. Slow down the tempo on the pushups if you want to make them more challenging. Recovery: sloppy joes and tator tots, 30 min walk, deep heavy sleep.
 
 Source: @sorinex_squatober, posted October 4, 2026
+
+## Day 8 — Thursday, October 8, 2026 — Temperature Check
+
+| Exercise | Scheme |
+| --- | --- |
+| Back squat | 5 reps @ 65%, 3 reps @ 75%, 1 rep @ 85%, 1 rep @ 93%, 1 rep @ 100% |
+| Back squat bonus attempts | 1 rep @ 102.5%, 1 rep @ 105% |
+| Bench press | 5 reps @ 67%, 72%, 75%, 80%, 82% |
+| Slow Strict Chin Up | 4 sets of 3-5 reps |
+| KB Swings (cardio) | 5 sets of 10 reps |
+
+Warm up by bouncing around and getting the mind, body and spirit on High Alert. 2 1/2 min rest between back squat sets, 2 1/2 min between bench sets, 2 min between chin up sets, 60 sec between KB swing sets. Use the same training max you have used for the last seven days: the first goal is to hit the 100% rep, and if you cannot, lower your training max. The 102.5% and 105% attempts are bonus attempts — only take them if you are 100% confident you will succeed, because the goal today is zero misses, and hold yourself accountable to great depth on the singles. If a bonus attempt is good, adjust your new training max to that. Recovery: lasagna, get an extra helping; 30 min walk; sleep deep and heavy.
+
+Source: @sorinex_squatober, posted October 7, 2026
