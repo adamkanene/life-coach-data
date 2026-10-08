@@ -37,5 +37,17 @@
       { "name": "KB swings (cardio superset a)", "scheme": "4 sets of 10 reps" },
       { "name": "Close grip pushups (cardio superset b)", "scheme": "4 sets of 8-12 reps" }
     ]
+  },
+  "2026-10-08": {
+    "focus": "Squatober Day 8 — Temperature Check",
+    "type": "strength",
+    "notes": "2 1/2 min rest between back squat sets; 2 1/2 min between bench sets; 2 min between chin up sets; 60 sec between KB swing sets. Warm up: bounce around and get the mind, body, and spirit on High Alert. Use the same training max you've used the last seven days. Goal is to hit the 100% rep — if you can't, lower your training max. Bonus attempts at 102.5% and 105% only if you're 100% confident you will succeed. No misses, and hold yourself accountable to great depth. If a bonus attempt is good, make that your new training max. Recovery: lasagna (get an extra helping), 30 min walk, sleep deep and heavy. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "Back squat", "scheme": "5 reps @ 65%, 3 reps @ 75%, 1 rep @ 85%, 1 rep @ 93%, 1 rep @ 100%" },
+      { "name": "Back squat bonus attempts (optional)", "scheme": "1 rep @ 102.5%, 1 rep @ 105%" },
+      { "name": "Bench press", "scheme": "5 reps @ 67%, 72%, 75%, 80%, 82%" },
+      { "name": "Slow strict chin up", "scheme": "4 sets of 3-5 reps" },
+      { "name": "KB swings (cardio)", "scheme": "5 sets of 10 reps" }
+    ]
   }
 }
