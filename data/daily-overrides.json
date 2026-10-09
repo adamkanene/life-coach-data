@@ -49,5 +49,19 @@
       { "name": "Slow strict chin up", "scheme": "4 sets of 3-5 reps" },
       { "name": "KB swings (cardio)", "scheme": "5 sets of 10 reps" }
     ]
+  },
+  "2026-10-09": {
+    "focus": "Squatober Day 9 — Polo Pump Party",
+    "type": "strength",
+    "notes": "Tempo squats: 5 sec tempo down, regular tempo up — hold yourself accountable to a realistic five second count, no fast counting. 3 min rest between squat sets; 90 sec between overhead press sets; 90 sec between close grip bench / rear lateral raise superset rounds; 2 min between triceps pushdown / bicep 21s superset rounds; 90 sec between pinch hold sets. Pay attention to the rest times and put weight on the bar — the rest of the program is going to initiate a massive pump. Warm up: pick out the perfect Polo to get absolutely jacked in. Recovery: smash burgers & fries, 30 min walk, sleep to grow. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "Tempo back squats", "scheme": "3 sets of 5 @ 60%" },
+      { "name": "Standing BB overhead press", "scheme": "8 sets of 8 reps" },
+      { "name": "Close grip bench press (superset a)", "scheme": "5 sets of 10 reps" },
+      { "name": "DB rear lateral raises (superset b)", "scheme": "5 sets of 10 reps" },
+      { "name": "Triceps pushdowns (superset a)", "scheme": "3 sets of 25 reps" },
+      { "name": "BB bicep 21's (superset b)", "scheme": "3 sets of 21 reps" },
+      { "name": "Bumper plate pinch holds (cardio)", "scheme": "4 x 20 sec" }
+    ]
   }
 }
