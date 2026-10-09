@@ -64,3 +64,19 @@ Source: @sorinex_squatober, posted October 4, 2026
 Warm up by bouncing around and getting the mind, body and spirit on High Alert. 2 1/2 min rest between back squat sets, 2 1/2 min between bench sets, 2 min between chin up sets, 60 sec between KB swing sets. Use the same training max you have used for the last seven days: the first goal is to hit the 100% rep, and if you cannot, lower your training max. The 102.5% and 105% attempts are bonus attempts — only take them if you are 100% confident you will succeed, because the goal today is zero misses, and hold yourself accountable to great depth on the singles. If a bonus attempt is good, adjust your new training max to that. Recovery: lasagna, get an extra helping; 30 min walk; sleep deep and heavy.
 
 Source: @sorinex_squatober, posted October 7, 2026
+
+## Day 9 — Friday, October 9, 2026 — Polo Pump Party
+
+| Exercise | Scheme |
+| --- | --- |
+| Tempo Back Squats | 3 sets of 5 @ 60% |
+| Standing BB Overhead Press | 8 sets of 8 reps |
+| Close Grip Bench Press (superset a) | 5 sets of 10 reps |
+| DB Rear Lateral Raises (superset b) | 5 sets of 10 reps |
+| Triceps Pushdowns (superset a) | 3 sets of 25 reps |
+| BB Bicep 21's (superset b) | 3 sets of 21 reps |
+| Bumper Plate Pinch Holds (cardio) | 4 x 20 sec |
+
+Warm up by picking out the perfect Polo to get absolutely Jacked in. Tempo work arrives on the squats: 5 sec tempo down, regular tempo up — hold yourself accountable and do a realistic five second tempo, no fast counting. 3 min rest between squat sets, 90 sec between overhead press sets, 90 sec between the close grip bench and rear lateral raise superset rounds, 2 min between the triceps pushdown and bicep 21's rounds, 90 sec between pinch hold sets. The rest of the program is going to initiate a massive pump, so pay attention to the rest times and put weight on the bar — those polo shirts are going to be fitting tight when you're done. Recovery: smash burgers and fries, 30 min walk, sleep to grow.
+
+Source: @sorinex_squatober, posted October 8, 2026
