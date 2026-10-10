@@ -63,5 +63,18 @@
       { "name": "BB bicep 21's (superset b)", "scheme": "3 sets of 21 reps" },
       { "name": "Bumper plate pinch holds (cardio)", "scheme": "4 x 20 sec" }
     ]
+  },
+  "2026-10-11": {
+    "focus": "Squatober Day 11 — The Weekend (rest & recovery)",
+    "type": "rest",
+    "notes": "Rest day. Everyone has been training hard all week so please enjoy some downtime to get ready for a new week. Week three will be more basic strength training. Recovery meals are on slide two for next week. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "30 min walk", "scheme": "30 min" },
+      { "name": "Cook something good", "scheme": "—" },
+      { "name": "Take a nap", "scheme": "—" },
+      { "name": "Visualize a strong upcoming week", "scheme": "—" },
+      { "name": "Map out ways to get extra sleep", "scheme": "—" },
+      { "name": "Dream of Heavy Deep Squats", "scheme": "—" }
+    ]
   }
 }
