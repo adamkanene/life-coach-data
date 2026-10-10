@@ -80,3 +80,18 @@ Source: @sorinex_squatober, posted October 7, 2026
 Warm up by picking out the perfect Polo to get absolutely Jacked in. Tempo work arrives on the squats: 5 sec tempo down, regular tempo up — hold yourself accountable and do a realistic five second tempo, no fast counting. 3 min rest between squat sets, 90 sec between overhead press sets, 90 sec between the close grip bench and rear lateral raise superset rounds, 2 min between the triceps pushdown and bicep 21's rounds, 90 sec between pinch hold sets. The rest of the program is going to initiate a massive pump, so pay attention to the rest times and put weight on the bar — those polo shirts are going to be fitting tight when you're done. Recovery: smash burgers and fries, 30 min walk, sleep to grow.
 
 Source: @sorinex_squatober, posted October 8, 2026
+
+## Day 11 — Sunday, October 11, 2026 — The Weekend (Rest & Recovery)
+
+| Exercise | Scheme |
+| --- | --- |
+| 30 min walk | 30 min |
+| Cook something good | — |
+| Take a nap | — |
+| Visualize a strong upcoming week | — |
+| Map out ways to get extra sleep | — |
+| Dream of Heavy Deep Squats | — |
+
+Rest day: everyone has been training hard all week, so enjoy some downtime to get ready for a new week. Week three will be more basic strength training, and the recovery meals for next week are on slide two of the post.
+
+Source: @sorinex_squatober, posted October 10, 2026
