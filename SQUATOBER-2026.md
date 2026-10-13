@@ -95,3 +95,18 @@ Source: @sorinex_squatober, posted October 8, 2026
 Rest day: everyone has been training hard all week, so enjoy some downtime to get ready for a new week. Week three will be more basic strength training, and the recovery meals for next week are on slide two of the post.
 
 Source: @sorinex_squatober, posted October 10, 2026
+
+## Day 13 — Tuesday, October 13, 2026 — Farm STRONG
+
+| Exercise | Scheme |
+| --- | --- |
+| DB or KB Farmer's Carry (warm up) | 4 x 30 yds, ↑ weight each set |
+| Pause BACK SQUAT | 1 set of 5 reps @ 60% |
+| BB Zercher Squats | 3 sets of 5 reps |
+| KB or DB Waiter Suitcase Carry | 4 x 40 yds, switch arms halfway of walk |
+| KB or DB Squat Thrusters | 5 sets of 5 reps |
+| KB Swings (cardio) | 6 sets of 10 reps |
+
+Warm up with the farmer's carry, increasing weight each set, 90 sec rest between sets. A day dedicated to serious strength work: get down nice and deep in the back squat and hold yourself accountable to a full three second pause in the deep bottom — having a training partner count out the seconds is a great idea. Stay at medium intensity on the Zerchers, 2 min rest between sets. For the waiter/suitcase carry, walk 20 yards, switch the arm positions, then walk 20 more yards to complete one set of 40 yards; 90 sec rest between sets. Elevating your heels for the squat thrusters is totally fine, 90 sec rest between sets. 60 sec rest between KB swing sets. Video examples are on slides two and three of the post. Recovery: eggs, bacon, biscuits & gravy, 30 min walk, sleep to grow strong.
+
+Source: @sorinex_squatober, posted October 12, 2026
