@@ -76,5 +76,18 @@
       { "name": "Map out ways to get extra sleep", "scheme": "—" },
       { "name": "Dream of Heavy Deep Squats", "scheme": "—" }
     ]
+  },
+  "2026-10-13": {
+    "focus": "Squatober Day 13 — Farm STRONG",
+    "type": "strength",
+    "notes": "Warm up: DB or KB farmer's carry, 4 x 30 yds, increase weight each set, 90 sec rest between sets. 3 sec pause in the deep bottom of the back squat — hold yourself accountable to a full three second count; having a training partner count the seconds helps. Medium intensity on the Zerchers, 2 min rest between sets. Waiter/suitcase carry: walk 20 yds, switch arm positions, walk 20 more yds — that completes one set of 40 yds; 90 sec rest between sets. Elevating your heels for the squat thrusters is fine. 60 sec rest between KB swing sets. Video examples on slides two and three. Recovery: eggs, bacon, biscuits & gravy, 30 min walk, sleep to grow strong. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "DB or KB farmer's carry (warm up)", "scheme": "4 x 30 yds, increase weight each set" },
+      { "name": "Pause back squat", "scheme": "1 set of 5 reps @ 60%" },
+      { "name": "BB Zercher squats", "scheme": "3 sets of 5 reps" },
+      { "name": "KB or DB waiter suitcase carry", "scheme": "4 x 40 yds, switch arms halfway of walk" },
+      { "name": "KB or DB squat thrusters", "scheme": "5 sets of 5 reps" },
+      { "name": "KB swings (cardio)", "scheme": "6 sets of 10 reps" }
+    ]
   }
 }
