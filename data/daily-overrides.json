@@ -1,4 +1,16 @@
 {
+  "2026-10-14": {
+    "focus": "Squatober Day 14 — Double Coupon Strong",
+    "type": "strength",
+    "notes": "Warm up: loosen up the lats and low back, then 3 sets of 3-5 reps for chin ups, rest as needed. 2 1/2 min rest between sets on the back squat, bench press and Bulgarians; rest as needed on the pushups. Keep the Bulgarians mild/medium intensity — they will sneak up on you. Close grip pushups with thumbs about 8\" apart. Video example of the Double Bottom Bounce is on the post's second slide. Recovery: Hamburger Helper, 30 min walk, sleep to grow thick. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "Chin ups (warm up)", "scheme": "3 sets of 3-5 reps" },
+      { "name": "Double Bottom Bounce back squat", "scheme": "4 sets of 3 reps 60%, 65%, 70%, 73%" },
+      { "name": "Double Bottom Bounce bench press", "scheme": "5 sets of 2 reps 65%, 70%, 75%, 80%, 80%" },
+      { "name": "BB Double Bottom Bounce Bulgarians", "scheme": "2 sets of 5 each leg" },
+      { "name": "Double Bottom Bounce close grip pushups (cardio)", "scheme": "5 sets of 8-10 reps" }
+    ]
+  },
   "2026-10-02": {
     "focus": "Squatober Day 2 — Bending in a Polo",
     "type": "strength",
