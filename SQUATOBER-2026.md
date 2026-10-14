@@ -110,3 +110,17 @@ Source: @sorinex_squatober, posted October 10, 2026
 Warm up with the farmer's carry, increasing weight each set, 90 sec rest between sets. A day dedicated to serious strength work: get down nice and deep in the back squat and hold yourself accountable to a full three second pause in the deep bottom — having a training partner count out the seconds is a great idea. Stay at medium intensity on the Zerchers, 2 min rest between sets. For the waiter/suitcase carry, walk 20 yards, switch the arm positions, then walk 20 more yards to complete one set of 40 yards; 90 sec rest between sets. Elevating your heels for the squat thrusters is totally fine, 90 sec rest between sets. 60 sec rest between KB swing sets. Video examples are on slides two and three of the post. Recovery: eggs, bacon, biscuits & gravy, 30 min walk, sleep to grow strong.
 
 Source: @sorinex_squatober, posted October 12, 2026
+
+## Day 14 — Wednesday, October 14, 2026 — Double Coupon Strong
+
+| Exercise | Scheme |
+| --- | --- |
+| Chin Ups (warm up) | 3 sets of 3-5 reps |
+| Double Bottom Bounce Back Squat | 4 sets of 3 reps 60%, 65%, 70%, 73% |
+| Double Bottom Bounce Bench Press | 5 sets of 2 reps 65%, 70%, 75%, 80%, 80% |
+| BB Double Bottom Bounce Bulgarians | 2 sets of 5 each Leg |
+| Double Bottom Bounce Close Grip Pushups (cardio) | 5 sets of 8-10 reps |
+
+Warm up by loosening up the lats and low back, then perform the chin ups, resting as needed. 2 1/2 min rest between sets on the back squat, bench press and Bulgarians. Keep the Bulgarians at mild/medium intensity — they will sneak up on you. Close grip pushups with thumbs about 8" apart, rest as needed. A video example of the Double Bottom Bounce (405 for 3 reps) is on slide two of the post. Recovery: Hamburger Helper, 30 min walk, sleep to grow thick.
+
+Source: @sorinex_squatober, posted October 13, 2026
