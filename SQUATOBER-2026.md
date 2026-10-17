@@ -124,3 +124,19 @@ Source: @sorinex_squatober, posted October 12, 2026
 Warm up by loosening up the lats and low back, then perform the chin ups, resting as needed. 2 1/2 min rest between sets on the back squat, bench press and Bulgarians. Keep the Bulgarians at mild/medium intensity — they will sneak up on you. Close grip pushups with thumbs about 8" apart, rest as needed. A video example of the Double Bottom Bounce (405 for 3 reps) is on slide two of the post. Recovery: Hamburger Helper, 30 min walk, sleep to grow thick.
 
 Source: @sorinex_squatober, posted October 13, 2026
+
+## Day 17 — Saturday, October 17, 2026 — The Weekend (Rest & Recovery)
+
+| Exercise | Scheme |
+| --- | --- |
+| 30 min walk | 30 min |
+| Extra naps and protein | — |
+| Extra scoop of Horse Creatine | — |
+| Go grocery shopping | — |
+| Look over the last 16 days | — |
+| Dream about Strength Gains | — |
+| Cook something Thick and Hearty | — |
+
+Rest day, programmed together with Day 18 for the weekend. It's that time of year when the excitement and newness has started to wear off, so dig down deep and rely on your discipline and come and train each day with the same intent and enthusiasm as you did on day one. Take care of yourself over the weekend and do the things needed so we can start Monday extremely strong. Day 18 (Sunday) is do everything like above. Get ready for Week 4 — be just excited about Days 19, 20, 21, 22 and 23 as you were for Day 1. When in doubt, SQUAT it out!
+
+Source: @sorinex_squatober, posted October 16, 2026
