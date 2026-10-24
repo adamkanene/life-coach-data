@@ -1,4 +1,18 @@
 {
+  "2026-10-25": {
+    "focus": "Squatober Day 25 — Recovery Room",
+    "type": "rest",
+    "notes": "Rest day. Get some rest so everyone is ready for a great final push — basic strength training Monday through Thursday next week sets you up for Friday success. Recovery meals for Week 5 are on the post's second slide. When in doubt, SQUAT it out! — via @sorinex_squatober",
+    "exercises": [
+      { "name": "30 min walk", "scheme": "30 min" },
+      { "name": "Do some meal prep", "scheme": "—" },
+      { "name": "Extra nap", "scheme": "—" },
+      { "name": "Invite all your friends to come watch you squat the house on Friday 10-30-26", "scheme": "—" },
+      { "name": "Mental prep to have best training in days 26, 27, 28, 29", "scheme": "—" },
+      { "name": "Practice your Big Squat Celebration", "scheme": "—" },
+      { "name": "Get to bed early", "scheme": "—" }
+    ]
+  },
   "2026-10-17": {
     "focus": "Squatober Day 17 — Weekend Rest & Recovery",
     "type": "rest",
