@@ -140,3 +140,19 @@ Source: @sorinex_squatober, posted October 13, 2026
 Rest day, programmed together with Day 18 for the weekend. It's that time of year when the excitement and newness has started to wear off, so dig down deep and rely on your discipline and come and train each day with the same intent and enthusiasm as you did on day one. Take care of yourself over the weekend and do the things needed so we can start Monday extremely strong. Day 18 (Sunday) is do everything like above. Get ready for Week 4 — be just excited about Days 19, 20, 21, 22 and 23 as you were for Day 1. When in doubt, SQUAT it out!
 
 Source: @sorinex_squatober, posted October 16, 2026
+
+## Day 25 — Sunday, October 25, 2026 — Recovery Room
+
+| Exercise | Scheme |
+| --- | --- |
+| 30 min walk | 30 min |
+| Do some meal prep | — |
+| Extra nap | — |
+| Invite all your friends to come watch you squat the house on Friday 10-30-26 | — |
+| Mental prep to have best training in days 26, 27, 28, 29 | — |
+| Practice your Big Squat Celebration | — |
+| Get to bed early | — |
+
+Rest day, programmed together with Day 24 for the weekend. Get some rest — everyone needs to be ready for a great final push. The basic strength training Monday through Thursday next week will set you up for Friday success. Recovery meals for Week 5 are on the second slide of the post.
+
+Source: @sorinex_squatober, posted October 24, 2026
