@@ -156,3 +156,18 @@ Source: @sorinex_squatober, posted October 16, 2026
 Rest day, programmed together with Day 24 for the weekend. Get some rest — everyone needs to be ready for a great final push. The basic strength training Monday through Thursday next week will set you up for Friday success. Recovery meals for Week 5 are on the second slide of the post.
 
 Source: @sorinex_squatober, posted October 24, 2026
+
+## Day 28 — Wednesday, October 28, 2026 — The Day before THE DAY BEFORE
+
+| Exercise | Scheme |
+| --- | --- |
+| KB Swings (warm up, superset) | 3 sets of 10 reps |
+| Bodyweight Bulgarians (warm up, superset) | 3 sets of 5 each leg |
+| Speedy Singles | @ 65%, 70%, 75%, 70% |
+| Bench Press | 5/70%, 3/80%, 1/88%, 1/92% |
+| BB RDL's | 3 sets of 5 reps |
+| Close Grip Pushups | 3 sets of 8-12 reps |
+
+Warm up the KB swings and bodyweight Bulgarians as a superset, just your bodyweight, with 2 min rest between sets. 90 sec rest between each speedy single — the warm-up should get the blood pumping and get you loose so you can attack those singles, and you should give the same effort on these lighter singles as you did on Monday with the heavy singles: learn to not only lift the weight, but to MOVE DAT WEIGHT with some intent. 2 1/2 min rest between bench press sets. Keep the BB RDL's at medium intensity with 2 min rest between sets, and 90 sec rest between sets of close grip pushups. Another day designed to get in, get a training stimulus and get out — should take around 30 to 35 minutes. Just another day of BASIC STRENGTH TRAINING. Recovery: chicken & dumplings, 30 min walk, sleep for success. When in doubt, SQUAT it out!
+
+Source: @sorinex_squatober, posted October 27, 2026
