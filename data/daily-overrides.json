@@ -1,4 +1,17 @@
 {
+  "2026-10-28": {
+    "focus": "Squatober Day 28 — The Day before THE DAY BEFORE",
+    "type": "strength",
+    "notes": "Warm up as a superset: KB swings and bodyweight Bulgarians, just your bodyweight, 2 min rest between sets. 90 sec rest between each Speedy Single — give the same effort on these lighter singles as you did on Monday's heavy singles, and learn to MOVE DAT WEIGHT with intent. 2 1/2 min rest between bench press sets. Keep the BB RDLs at medium intensity with 2 min rest; 90 sec rest between pushup sets. Get in, get the stimulus, get out — should take 30 to 35 minutes. Recovery: chicken & dumplings, 30 min walk, sleep for success. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "KB swings (warm up, superset)", "scheme": "3 sets of 10 reps" },
+      { "name": "Bodyweight Bulgarians (warm up, superset)", "scheme": "3 sets of 5 each leg" },
+      { "name": "Speedy Singles", "scheme": "65%, 70%, 75%, 70%" },
+      { "name": "Bench press", "scheme": "5/70%, 3/80%, 1/88%, 1/92%" },
+      { "name": "BB RDL's", "scheme": "3 sets of 5 reps" },
+      { "name": "Close grip pushups", "scheme": "3 sets of 8-12 reps" }
+    ]
+  },
   "2026-10-25": {
     "focus": "Squatober Day 25 — Recovery Room",
     "type": "rest",
