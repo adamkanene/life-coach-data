@@ -171,3 +171,16 @@ Source: @sorinex_squatober, posted October 24, 2026
 Warm up the KB swings and bodyweight Bulgarians as a superset, just your bodyweight, with 2 min rest between sets. 90 sec rest between each speedy single — the warm-up should get the blood pumping and get you loose so you can attack those singles, and you should give the same effort on these lighter singles as you did on Monday with the heavy singles: learn to not only lift the weight, but to MOVE DAT WEIGHT with some intent. 2 1/2 min rest between bench press sets. Keep the BB RDL's at medium intensity with 2 min rest between sets, and 90 sec rest between sets of close grip pushups. Another day designed to get in, get a training stimulus and get out — should take around 30 to 35 minutes. Just another day of BASIC STRENGTH TRAINING. Recovery: chicken & dumplings, 30 min walk, sleep for success. When in doubt, SQUAT it out!
 
 Source: @sorinex_squatober, posted October 27, 2026
+
+## Day 29 — Thursday, October 29, 2026 — One last GET RIGHT
+
+| Exercise | Scheme |
+| --- | --- |
+| More Speedy Doubles | @ 55%, 60%, 50% |
+| Slow Strict Chin Ups | 5 sets of 2 reps |
+| Bumper Plate Pinch Holds | 4 sets of 20 seconds |
+| Cardio | Planned Day Off |
+
+Warm up: make your playlist, strategize your max warm up routine, remind your friends to attend. 90 sec rest between sets on all three movements. One last Tune Up before the Friday Showdown — even though it is lighter weight, move with maximum speed and intent. This lifting session should be our shortest duration yet; the goal is to have your batteries charged up fully for Friday. Just another day of BASIC STRENGTH TRAINING. Recovery: Sloppy Joes & Tator Tots (fix them extra sloppy), 15 min walk, sleep for the Big One. When in doubt, SQUAT it out!
+
+Source: @sorinex_squatober, posted October 28, 2026
