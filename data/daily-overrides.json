@@ -1,4 +1,15 @@
 {
+  "2026-10-29": {
+    "focus": "Squatober Day 29 — One last GET RIGHT",
+    "type": "strength",
+    "notes": "Warm up: make your playlist, strategize your max warm up routine, remind your friends to attend. One last Tune Up before the Friday Showdown — even though the weight is lighter, move with maximum speed and intent. 90 sec rest between all sets on every movement. Cardio is a planned day off. This should be the shortest lifting session yet; the goal is to have your batteries charged up fully for Friday. Recovery: Sloppy Joes & Tator Tots (fix them extra sloppy), 15 min walk, sleep for the Big One. — via @sorinex_squatober",
+    "exercises": [
+      { "name": "More Speedy Doubles", "scheme": "55%, 60%, 50%" },
+      { "name": "Slow Strict Chin Ups", "scheme": "5 sets of 2 reps" },
+      { "name": "Bumper Plate Pinch Holds", "scheme": "4 sets of 20 seconds" },
+      { "name": "Cardio", "scheme": "Planned day off" }
+    ]
+  },
   "2026-10-28": {
     "focus": "Squatober Day 28 — The Day before THE DAY BEFORE",
     "type": "strength",
