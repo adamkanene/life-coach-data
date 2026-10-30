@@ -184,3 +184,12 @@ Source: @sorinex_squatober, posted October 27, 2026
 Warm up: make your playlist, strategize your max warm up routine, remind your friends to attend. 90 sec rest between sets on all three movements. One last Tune Up before the Friday Showdown — even though it is lighter weight, move with maximum speed and intent. This lifting session should be our shortest duration yet; the goal is to have your batteries charged up fully for Friday. Just another day of BASIC STRENGTH TRAINING. Recovery: Sloppy Joes & Tator Tots (fix them extra sloppy), 15 min walk, sleep for the Big One. When in doubt, SQUAT it out!
 
 Source: @sorinex_squatober, posted October 28, 2026
+## Day 31 — Saturday, October 31, 2026 — "THE END"
+
+| Exercise | Scheme |
+| --- | --- |
+| — (no programming — final day of the season) | — |
+
+The card reads: "It's Been a Blast!! 335 Days until Season 13. See you then!!" Per the caption, the final day is the official ending and the book closes until next year when we write a new chapter. When in doubt, SQUAT it out!
+
+Source: @sorinex_squatober, posted October 30, 2026
