@@ -172,6 +172,26 @@
   .open-wk{margin-top:12px; width:100%; padding:10px; border-radius:12px; border:1px solid rgba(34,197,94,0.45);
     background:rgba(34,197,94,0.10); color:var(--accent); font-weight:700; font-size:13.5px; cursor:pointer;}
 
+
+  table.sets.log th:nth-child(1){width:13%;} table.sets.log th:nth-child(2){width:15%;}
+  table.sets.log th:nth-child(3){width:28%;} table.sets.log th:nth-child(4){width:24%;}
+  table.sets.log td{padding:5px 0;}
+  table.sets tr.ok td{color:var(--accent);}
+  table.sets tr.desc td{color:var(--text); font-weight:600; border-bottom:none; padding-top:8px;}
+  .in{background:var(--card2); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:6px 8px;
+    font-size:15px; width:88%; font-family:inherit;}
+  .in.tok{width:100%; margin-top:8px;}
+  .in.rec{width:80px; display:inline-block;}
+  .tick{width:34px; height:34px; border-radius:10px; border:1px solid var(--border); background:var(--card2);
+    color:var(--accent); font-size:17px; font-weight:800; cursor:pointer; float:right;}
+  .tick.on{background:rgba(34,197,94,0.18); border-color:rgba(34,197,94,0.55);}
+  .add{background:none; border:1px dashed var(--border); color:var(--muted); border-radius:8px; padding:6px 10px;
+    font-size:12.5px; cursor:pointer; margin:4px 0;}
+  .save-btn{width:100%; margin-top:14px; padding:11px; border-radius:12px; border:1px solid rgba(34,197,94,0.45);
+    background:rgba(34,197,94,0.14); color:var(--accent); font-size:14px; font-weight:700; cursor:pointer;}
+  .save-btn:disabled{opacity:.5; cursor:default;}
+  .link-btn{background:none; border:none; color:var(--muted); text-decoration:underline; font-size:12px; padding:6px 0; cursor:pointer;}
+
   .footer-note{text-align:center; color:var(--muted); font-size:11px; margin-top:18px;}
 </style>
 </head>
@@ -278,10 +298,11 @@
     bench: '#22c55e',
     squat: '#3b82f6',
     deadlift: '#a78bfa',
+    incline: '#f472b6',
     ohp: '#f59e0b'
   };
 
-  const MAIN_LIFTS = ['bench', 'squat', 'deadlift', 'ohp'];
+  const MAIN_LIFTS = ['bench', 'squat', 'deadlift', 'ohp', 'incline'];
   const LIFT_LABELS = {bench: 'Bench', squat: 'Squat', deadlift: 'Deadlift', ohp: 'OHP'};
 
   const PHASE_NAMES = {
@@ -389,7 +410,7 @@
     renderToday(profile, foodLog);
     setupTabs();
     const progWeek = currentProgramWeek(weeklyWorkouts);
-    renderWorkouts(progWeek);
+    renderWorkouts(progWeek, liftLog);
     renderTodayWorkout(trainingPlan, progWeek);
     renderTraining(healthDaily, trainingPlan);
     renderLifts(liftLog);
@@ -954,12 +975,15 @@
 
 
   // ---------- Workouts tab ----------
+  const REPO = 'adamkanene/life-coach-data';
+  let LIFT_LOG = [];
+
   function setupTabs(){
     const show = (v) => {
       document.getElementById('viewHome').hidden = v !== 'home';
       document.getElementById('viewWorkouts').hidden = v !== 'workouts';
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.view === v));
-      if(location.hash !== (v === 'workouts' ? '#workouts' : '')) history.replaceState(null, '', v === 'workouts' ? '#workouts' : location.pathname + location.search);
+      history.replaceState(null, '', v === 'workouts' ? '#workouts' : location.pathname + location.search);
       window.scrollTo(0, 0);
     };
     window.__showView = show;
@@ -969,6 +993,8 @@
 
   function store(k, v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); }catch(e){ return null; } }
   function isDone(w, id){ return store(`lc.done.${w.week_start}.${id}`) === '1'; }
+  function loadDraft(w, sid){ try{ return JSON.parse(store(`lc.log.${w.week_start}.${sid}`) || '{}') || {}; }catch(e){ return {}; } }
+  function saveDraft(w, sid, d){ store(`lc.log.${w.week_start}.${sid}`, JSON.stringify(d)); }
 
   function currentProgramWeek(ww){
     if(!ww || !ww.weeks) return null;
@@ -982,23 +1008,55 @@
   function fmtRange(a, b){
     const o = {month:'short', day:'numeric'};
     const pa = new Date(a + 'T12:00:00'), pb = new Date(b + 'T12:00:00');
-    return pa.toLocaleDateString(undefined, o) + ' \u2013 ' + pb.toLocaleDateString(undefined, o);
+    return pa.toLocaleDateString(undefined, o) + ' – ' + pb.toLocaleDateString(undefined, o);
   }
 
-  function setRowsHtml(rows){
-    let last = null, out = '';
-    rows.forEach(r => {
-      if(r.label && r.label !== last){ out += `<tr class="grp"><td colspan="3">${escapeHtml(r.label)}</td></tr>`; }
-      last = r.label || null;
-      const sr = typeof r.sets === 'number'
-        ? (r.sets === 1 ? `${escapeHtml(String(r.reps))} rep${r.reps === 1 ? '' : 's'}` : `${r.sets} \u00d7 ${escapeHtml(String(r.reps))}`)
-        : `${escapeHtml(String(r.sets))} \u00b7 ${escapeHtml(String(r.reps))}${typeof r.reps === 'number' ? (r.reps === 1 ? ' rep' : ' reps') : ''}`;
-      out += `<tr><td>${sr}</td><td>${r.pct != null ? r.pct + '%' : '\u2014'}</td><td class="lb">${r.lb != null ? r.lb + ' lb' : '+5\u201310 lb'}</td></tr>`;
+  // Name used in lift-log.json. Plain variants feed the Strength Progression chart.
+  function exerciseKey(b){
+    const n = b.name.toLowerCase();
+    if(n.startsWith('front squat')) return 'front squat';
+    if(n.startsWith('pause squat')) return 'pause squat';
+    if(n.startsWith('tempo')) return 'tempo squat';
+    return b.lift;
+  }
+
+  // One slot per set; open-ended rows ("Max in 10 min", "Your call") get an Add-set button.
+  function slotsFor(b){
+    const out = [];
+    b.rows.forEach((r, ri) => {
+      const reps = typeof r.reps === 'number' ? r.reps : '';
+      if(typeof r.sets === 'number'){
+        for(let i = 0; i < r.sets; i++) out.push({ri, label:r.label, pct:r.pct, lb:r.lb, reps});
+      } else {
+        out.push({ri, label:r.label, pct:r.pct, lb:r.lb, reps, open:true,
+          desc:`${r.sets} · ${r.reps}${typeof r.reps === 'number' ? (r.reps === 1 ? ' rep' : ' reps') : ''}${r.pct != null ? ' @' + r.pct + '%' : ''}${r.lb != null ? ' (' + r.lb + ' lb)' : ''}`});
+      }
     });
     return out;
   }
 
-  function renderWorkouts(w){
+  async function ghLogAppend(entries){
+    const tok = store('lc.gh.token');
+    if(!tok) throw new Error('Add your GitHub token in "Logging setup" below first.');
+    const url = `https://api.github.com/repos/${REPO}/contents/data/lift-log.json`;
+    const H = {Authorization:`Bearer ${tok}`, Accept:'application/vnd.github+json'};
+    for(let attempt = 0; attempt < 3; attempt++){
+      const g = await fetch(url + '?ref=main&t=' + Date.now(), {headers:H, cache:'no-store'});
+      if(!g.ok) throw new Error(`GitHub read failed (${g.status}). Check the token.`);
+      const j = await g.json();
+      const cur = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g, '')))) || '[]');
+      const next = cur.concat(entries);
+      const body = {message:`Log lifts ${todayStr()}`, sha:j.sha, branch:'main',
+                    content: btoa(unescape(encodeURIComponent(JSON.stringify(next) + '\n')))};
+      const p = await fetch(url, {method:'PUT', headers:{...H, 'Content-Type':'application/json'}, body:JSON.stringify(body)});
+      if(p.ok) return next;
+      if(p.status !== 409 && p.status !== 422) throw new Error(`GitHub save failed (${p.status}). Check the token has Contents write access.`);
+    }
+    throw new Error('GitHub save conflicted. Try again.');
+  }
+
+  function renderWorkouts(w, liftLog){
+    if(liftLog) LIFT_LOG = liftLog;
     const el = document.getElementById('workoutsBody');
     if(!w){
       el.innerHTML = `<div class="card"><div class="empty"><span class="emoji">🗓️</span>No workouts generated yet. They're built every Saturday at 11:30 PM.</div></div>`;
@@ -1011,16 +1069,68 @@
     const key = `lc.session.${w.week_start}`;
     let sel = parseInt(store(key) || '0', 10);
     if(!sel){ const next = w.sessions.find(x => !isDone(w, x.id)); sel = next ? next.id : 1; }
+    let msg = '';
 
     const draw = () => {
       const s = w.sessions.find(x => x.id === sel) || w.sessions[0];
       const done = isDone(w, s.id);
+      const d = loadDraft(w, s.id);
+      const blockState = (bi) => (d[bi] = d[bi] || {sets:{}, extra:[], record:''});
+
+      const blocksHtml = s.main.map((b, bi) => {
+        const st = blockState(bi);
+        const slots = slotsFor(b);
+        let last = null, n = 0, rows = '';
+        const inputRow = (cls, val, ph, attrs) => `<input class="in ${cls}" type="number" inputmode="decimal" value="${val ?? ''}" placeholder="${ph}" ${attrs}>`;
+        const setRow = (v, plan, attrs, num) => `
+          <tr class="${v.done ? 'ok' : ''}${v.saved ? ' saved' : ''}">
+            <td>${num}</td><td>${plan.pct != null ? plan.pct + '%' : '—'}</td>
+            <td>${inputRow('w', v.w ?? plan.lb, 'lb', attrs)}</td>
+            <td>${inputRow('r', v.r ?? plan.reps, 'reps', attrs)}</td>
+            <td><button class="tick ${v.done ? 'on' : ''}" ${attrs} ${v.saved ? 'disabled' : ''}>${v.saved ? '✓' : v.done ? '✓' : ''}</button></td>
+          </tr>`;
+        slots.forEach((sl, si) => {
+          if(sl.label && sl.label !== last) rows += `<tr class="grp"><td colspan="5">${escapeHtml(sl.label)}</td></tr>`;
+          last = sl.label || null;
+          if(sl.open){
+            rows += `<tr class="desc"><td colspan="5">${escapeHtml(sl.desc)}</td></tr>`;
+            st.extra.forEach((x, xi) => { if(x.ri === sl.ri){ n++; rows += setRow(x, sl, `data-b="${bi}" data-x="${xi}"`, n); } });
+            rows += `<tr><td colspan="5"><button class="add" data-b="${bi}" data-ri="${sl.ri}" data-si="${si}">+ Add set</button></td></tr>`;
+          } else {
+            n++; rows += setRow(st.sets[si] || {}, sl, `data-b="${bi}" data-s="${si}"`, n);
+          }
+        });
+        return `
+          <div class="lift-block">
+            <div class="lift-head"><div class="nm">${escapeHtml(b.name)}</div><div class="rest">Rest ${escapeHtml(b.rest)}</div></div>
+            <table class="sets log">
+              <thead><tr><th>Set</th><th>%</th><th>Lb</th><th>Reps</th><th class="r">Done</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+            ${b.note ? `<div class="note">${escapeHtml(b.note)}</div>` : ''}
+            ${b.record ? `<div class="record">${escapeHtml(b.record)}: <input class="in rec" data-b="${bi}" type="number" inputmode="decimal" value="${escapeHtml(st.record || '')}" ${st.recordSaved ? 'disabled' : ''}></div>` : ''}
+          </div>`;
+      }).join('');
+
+      const getPending = () => {
+        const pending = [];
+      s.main.forEach((b, bi) => {
+          const st = blockState(bi), slots = slotsFor(b);
+          Object.entries(st.sets).forEach(([si, v]) => { if(v.done && !v.saved) pending.push({b, bi, v, pct: slots[si] ? slots[si].pct : null}); });
+          st.extra.forEach(v => { if(v.done && !v.saved) pending.push({b, bi, v, pct: (b.rows[v.ri] || {}).pct}); });
+          if(b.record && st.record !== '' && st.record != null && !st.recordSaved) pending.push({b, bi, record:true});
+        });
+        return pending;
+      };
+      const pending = getPending();
+      const hasTok = !!store('lc.gh.token');
+
       el.innerHTML = `
         <div class="card">
           <div class="wk-head">
             <div>
-              <div class="t">Week ${w.week} of ${w.weeks_total} \u2014 ${escapeHtml(w.theme)}</div>
-              <div class="d">${fmtRange(w.week_start, w.week_end)} \u00b7 do sessions in order, any 4 days</div>
+              <div class="t">Week ${w.week} of ${w.weeks_total} — ${escapeHtml(w.theme)}</div>
+              <div class="d">${fmtRange(w.week_start, w.week_end)} · do sessions in order, any 4 days</div>
             </div>
             <span class="phase-tag">${w.sessions.filter(x => isDone(w, x.id)).length}/4</span>
           </div>
@@ -1030,23 +1140,16 @@
           ${w.sessions.map(x => `
             <button class="chip ${x.id === sel ? 'active' : ''} ${isDone(w, x.id) ? 'done' : ''}" data-id="${x.id}">
               <div class="n">${x.id}</div>
-              <div class="l">${escapeHtml(x.title.split('\u2014')[1] || '').trim()}</div>
+              <div class="l">${escapeHtml(x.title.split('—')[1] || '').trim()}</div>
             </button>`).join('')}
         </div>
 
         <div class="card">
           <div style="font-size:17px; font-weight:800;">${escapeHtml(s.title)}</div>
-          <div class="note" style="margin:2px 0 14px;">${escapeHtml(s.focus)}</div>
-          ${s.main.map(b => `
-            <div class="lift-block">
-              <div class="lift-head"><div class="nm">${escapeHtml(b.name)}</div><div class="rest">Rest ${escapeHtml(b.rest)}</div></div>
-              <table class="sets">
-                <thead><tr><th>Sets \u00d7 reps</th><th>%</th><th class="r">Weight</th></tr></thead>
-                <tbody>${setRowsHtml(b.rows)}</tbody>
-              </table>
-              ${b.note ? `<div class="note">${escapeHtml(b.note)}</div>` : ''}
-              ${b.record ? `<div class="record">Record \u2192 ${escapeHtml(b.record)}: ____</div>` : ''}
-            </div>`).join('')}
+          <div class="note" style="margin:2px 0 14px;">${escapeHtml(s.focus)} · edit the weight or reps if you did something different, then tap Done</div>
+          ${blocksHtml}
+          <button class="save-btn" id="saveBtn" ${pending.length ? '' : 'disabled'}>${pending.length ? `Save ${pending.length} to lift log` : 'Tap Done on sets to log them'}</button>
+          ${msg ? `<div class="note" style="text-align:center;">${msg}</div>` : ''}
         </div>
 
         ${s.accessories.length ? `
@@ -1060,22 +1163,72 @@
           ${s.finisher.map(a => `<div class="workout-item"><div class="t">${escapeHtml(a.name)}</div><div class="m">${escapeHtml(a.scheme)}</div></div>`).join('')}
         </div>
 
-        <button class="done-btn ${done ? 'on' : ''}" id="doneBtn">${done ? '\u2713 Session done' : 'Mark session done'}</button>
+        <button class="done-btn ${done ? 'on' : ''}" id="doneBtn">${done ? '✓ Session done' : 'Mark session done'}</button>
 
         <div class="card" style="margin-top:12px;">
-          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Swim \u00b7 bike \u00b7 run this week (2\u20133 sessions)</div>
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Swim · bike · run this week (2–3 sessions)</div>
           ${w.conditioning.map(c => `<div class="workout-item"><div><div class="t">${escapeHtml(c.mode)}</div><div class="m">${escapeHtml(c.timing)}</div></div><div class="m" style="text-align:right; max-width:55%;">${escapeHtml(c.session)}</div></div>`).join('')}
         </div>
 
         <div class="card">
           <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Rules</div>
           <ul class="rules">${w.rules.map(r => `<li>${escapeHtml(r)}</li>`).join('')}</ul>
-          <div class="note" style="margin-top:10px;">Maxes: squat ${w.maxes_lb.squat} \u00b7 bench ${w.maxes_lb.bench} \u00b7 deadlift ${w.maxes_lb.deadlift} \u00b7 OHP ${w.maxes_lb.ohp} \u00b7 incline ${w.maxes_lb.incline} lb</div>
+          <div class="note" style="margin-top:10px;">Maxes: squat ${w.maxes_lb.squat} · bench ${w.maxes_lb.bench} · deadlift ${w.maxes_lb.deadlift} · OHP ${w.maxes_lb.ohp} · incline ${w.maxes_lb.incline} lb</div>
+        </div>
+
+        <div class="card">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Logging setup</div>
+          ${hasTok
+            ? `<div class="note" style="margin-top:0;">Connected to GitHub on this device ✓</div><button class="link-btn" id="tokDel">Remove token from this device</button>`
+            : `<div class="note" style="margin-top:0;">To save sets to your lift log, paste a GitHub fine-grained token for life-coach-data (Contents: read and write). It's stored only in this browser.</div>
+               <input class="in tok" id="tokIn" type="password" placeholder="github_pat_…" autocomplete="off">
+               <button class="save-btn" id="tokSave" style="margin-top:8px;">Save token on this device</button>`}
         </div>`;
 
-      el.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { sel = +c.dataset.id; store(key, String(sel)); draw(); }));
+      // --- events
+      const upd = (t, fn) => { const bi = +t.dataset.b, st = blockState(bi); fn(st, t); saveDraft(w, s.id, d); };
+      const slotOf = (st, t) => t.dataset.x != null ? st.extra[+t.dataset.x] : (st.sets[+t.dataset.s] = st.sets[+t.dataset.s] || {});
+      el.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { sel = +c.dataset.id; store(key, String(sel)); msg = ''; draw(); }));
+      el.querySelectorAll('input.w, input.r').forEach(i => i.addEventListener('change', () =>
+        upd(i, (st, t) => { const v = slotOf(st, t); v[t.classList.contains('w') ? 'w' : 'r'] = t.value === '' ? null : Number(t.value); })));
+      el.querySelectorAll('input.rec').forEach(i => i.addEventListener('change', () => { upd(i, st => { st.record = i.value; }); draw(); }));
+      el.querySelectorAll('button.tick').forEach(btn => btn.addEventListener('click', () => {
+        const tr = btn.closest('tr');
+        upd(btn, (st, t) => {
+          const v = slotOf(st, t);
+          v.w = Number(tr.querySelector('input.w').value) || null;
+          v.r = Number(tr.querySelector('input.r').value) || null;
+          v.done = !v.done;
+        });
+        draw();
+      }));
+      el.querySelectorAll('button.add').forEach(btn => btn.addEventListener('click', () => {
+        upd(btn, st => { const sl = slotsFor(s.main[+btn.dataset.b])[+btn.dataset.si]; st.extra.push({ri:+btn.dataset.ri, w:sl.lb, r:sl.reps || null}); });
+        draw();
+      }));
       document.getElementById('doneBtn').addEventListener('click', () => {
-        store(`lc.done.${w.week_start}.${s.id}`, isDone(w, s.id) ? null : '1');
+        store(`lc.done.${w.week_start}.${s.id}`, isDone(w, s.id) ? null : '1'); draw();
+      });
+      const tokSave = document.getElementById('tokSave');
+      if(tokSave) tokSave.addEventListener('click', () => { const v = document.getElementById('tokIn').value.trim(); if(v){ store('lc.gh.token', v); msg = 'Token saved on this device.'; draw(); } });
+      const tokDel = document.getElementById('tokDel');
+      if(tokDel) tokDel.addEventListener('click', () => { store('lc.gh.token', null); draw(); });
+
+      document.getElementById('saveBtn').addEventListener('click', async (ev) => {
+        ev.target.disabled = true; ev.target.textContent = 'Saving…';
+        const today = todayStr();
+        const pending = getPending();
+        const entries = pending.map(p => p.record
+          ? {date:today, exercise:`${exerciseKey(p.b)} — ${p.b.record.toLowerCase()}`, value:Number(blockState(p.bi).record), week:w.week, session:s.id}
+          : {date:today, exercise:exerciseKey(p.b), weight_lb:p.v.w, reps:p.v.r, pct:p.pct ?? null, week:w.week, session:s.id});
+        try{
+          LIFT_LOG = await ghLogAppend(entries);
+          pending.forEach(p => { if(p.record) blockState(p.bi).recordSaved = true; else p.v.saved = true; });
+          saveDraft(w, s.id, d);
+          store(`lc.done.${w.week_start}.${s.id}`, '1');
+          msg = `Saved ${entries.length} to your lift log ✓`;
+          try{ renderLifts(LIFT_LOG); }catch(e){}
+        }catch(e){ msg = '⚠️ ' + escapeHtml(e.message); }
         draw();
       });
     };

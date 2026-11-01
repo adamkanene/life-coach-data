@@ -1,6 +1,6 @@
 {
   "split": "Push / Pull / Legs + Cardio",
-  "weekly_targets": { "strength": 3, "cardio": 2 },
+  "weekly_targets": { "strength": 4, "cardio": 2 },
   "notes": "Strength target rises to 4/wk in Sep 2026. Sauna anytime; cold plunge on cardio/rest days only (blunts hypertrophy within ~6h of lifting).",
   "week": {
     "Mon": { "focus": "Push A", "type": "strength", "exercises": [
