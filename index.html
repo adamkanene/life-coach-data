@@ -133,6 +133,45 @@
   .workout-item .t{font-weight:600;}
   .workout-item .m{color:var(--muted);}
 
+
+  /* Tabs + Workouts view */
+  .tabs{display:flex; gap:6px; margin-top:10px;}
+  .tab-btn{flex:1; background:var(--card2); color:var(--muted); border:1px solid var(--border); border-radius:10px;
+    padding:8px 10px; font-size:13px; font-weight:700; cursor:pointer;}
+  .tab-btn.active{background:rgba(34,197,94,0.14); color:var(--accent); border-color:rgba(34,197,94,0.45);}
+  .chips{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px;}
+  .chip{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:9px 6px; text-align:center;
+    color:var(--text); cursor:pointer; font:inherit;}
+  .chip .n{font-size:15px; font-weight:800;}
+  .chip .l{font-size:10.5px; color:var(--muted); margin-top:2px; line-height:1.25;}
+  .chip.active{border-color:var(--accent); background:rgba(34,197,94,0.10);}
+  .chip.done .n::after{content:" \2713"; color:var(--accent);}
+  .lift-block{margin-bottom:16px;}
+  .lift-block:last-child{margin-bottom:0;}
+  .lift-head{display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px;}
+  .lift-head .nm{font-size:15px; font-weight:700;}
+  .lift-head .rest{font-size:11.5px; color:var(--muted); white-space:nowrap;}
+  table.sets{width:100%; border-collapse:collapse; font-size:13.5px; table-layout:fixed;}
+  table.sets th:nth-child(1){width:52%;} table.sets th:nth-child(2){width:18%;}
+  table.sets th{text-align:left; color:var(--muted); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em;
+    font-weight:700; padding:4px 0; border-bottom:1px solid var(--border);}
+  table.sets td{padding:7px 0; border-bottom:1px solid var(--border);}
+  table.sets td.lb{font-weight:800; text-align:right;}
+  table.sets th.r{text-align:right;}
+  table.sets tr.grp td{color:var(--accent2); font-size:11px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.04em; padding-top:10px; border-bottom:none;}
+  .note{font-size:12.5px; color:var(--muted); margin-top:6px;}
+  .record{margin-top:6px; font-size:12.5px; color:var(--warn); font-weight:600;}
+  .wk-head{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+  .wk-head .t{font-size:17px; font-weight:800;}
+  .wk-head .d{font-size:12px; color:var(--muted); margin-top:2px;}
+  .done-btn{width:100%; margin-top:4px; padding:11px; border-radius:12px; border:1px solid var(--border);
+    background:var(--card2); color:var(--text); font-size:14px; font-weight:700; cursor:pointer;}
+  .done-btn.on{background:rgba(34,197,94,0.14); color:var(--accent); border-color:rgba(34,197,94,0.45);}
+  .rules{margin:0; padding-left:18px; font-size:12.5px; color:var(--muted); line-height:1.5;}
+  .open-wk{margin-top:12px; width:100%; padding:10px; border-radius:12px; border:1px solid rgba(34,197,94,0.45);
+    background:rgba(34,197,94,0.10); color:var(--accent); font-weight:700; font-size:13.5px; cursor:pointer;}
+
   .footer-note{text-align:center; color:var(--muted); font-size:11px; margin-top:18px;}
 </style>
 </head>
@@ -141,9 +180,17 @@
 <header>
   <h1 id="headerName">Life Coach</h1>
   <div class="sub" id="headerSub">Loading…</div>
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" data-view="home" role="tab">Dashboard</button>
+    <button class="tab-btn" data-view="workouts" role="tab">Workouts</button>
+  </div>
 </header>
 
-<div class="wrap">
+<div class="wrap" id="viewWorkouts" hidden>
+  <div id="workoutsBody"><div class="card"><div class="empty"><span class="emoji">⏳</span>Loading this week's workouts…</div></div></div>
+</div>
+
+<div class="wrap" id="viewHome">
 
   <!-- TODAY -->
   <section>
@@ -328,18 +375,22 @@
   function clampPct(v, t){ if(!t) return 0; return Math.min(100, Math.max(0, (v/t)*100)); }
 
   async function init(){
-    const [profile, foodLog, weightLog, healthDaily, trainingPlan, liftLog] = await Promise.all([
+    const [profile, foodLog, weightLog, healthDaily, trainingPlan, liftLog, weeklyWorkouts] = await Promise.all([
       fetchJSON('./data/profile.json', null),
       fetchJSON('./data/food-log.json', []),
       fetchJSON('./data/weight-log.json', []),
       fetchJSON('./data/health-daily.json', []),
       fetchJSON('./data/training-plan.json', null).then(async p => { const o = await fetchJSON('./data/daily-overrides.json', {}); const d = new Date(), k = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; if(p && o && o[k]){ p.week[todayWeekdayKey()] = o[k]; if(o[k].notes) p.notes = o[k].notes; } return p; }),
-      fetchJSON('./data/lift-log.json', [])
+      fetchJSON('./data/lift-log.json', []),
+      fetchJSON('./data/weekly-workouts.json', null)
     ]);
 
     renderHeader(profile);
     renderToday(profile, foodLog);
-    renderTodayWorkout(trainingPlan);
+    setupTabs();
+    const progWeek = currentProgramWeek(weeklyWorkouts);
+    renderWorkouts(progWeek);
+    renderTodayWorkout(trainingPlan, progWeek);
     renderTraining(healthDaily, trainingPlan);
     renderLifts(liftLog);
     renderTrends(profile, foodLog);
@@ -634,9 +685,24 @@
     });
   }
 
-  function renderTodayWorkout(trainingPlan){
+  function renderTodayWorkout(trainingPlan, progWeek){
     const card = document.getElementById('todayWorkoutCard');
     const body = document.getElementById('todayWorkoutBody');
+
+    if(progWeek && progWeek.status === 'active'){
+      const done = progWeek.sessions.filter(x => isDone(progWeek, x.id)).length;
+      card.style.display = 'block';
+      body.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+          <div>
+            <div style="font-size:15px; font-weight:700;">Week ${progWeek.week} of ${progWeek.weeks_total} \u2014 ${escapeHtml(progWeek.theme)}</div>
+            <div class="note" style="margin-top:3px;">${done} of 4 sessions done this week</div>
+          </div>
+          <span class="type-tag type-strength">Strength</span>
+        </div>
+        <button class="open-wk" onclick="window.__showView('workouts')">Open this week's workouts \u2192</button>`;
+      return;
+    }
 
     if(!trainingPlan || !trainingPlan.week){
       card.style.display = 'none';
@@ -884,6 +950,136 @@
       data: { labels, datasets },
       options: baseLineOptions()
     });
+  }
+
+
+  // ---------- Workouts tab ----------
+  function setupTabs(){
+    const show = (v) => {
+      document.getElementById('viewHome').hidden = v !== 'home';
+      document.getElementById('viewWorkouts').hidden = v !== 'workouts';
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+      if(location.hash !== (v === 'workouts' ? '#workouts' : '')) history.replaceState(null, '', v === 'workouts' ? '#workouts' : location.pathname + location.search);
+      window.scrollTo(0, 0);
+    };
+    window.__showView = show;
+    document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+    show(location.hash === '#workouts' ? 'workouts' : 'home');
+  }
+
+  function store(k, v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); }catch(e){ return null; } }
+  function isDone(w, id){ return store(`lc.done.${w.week_start}.${id}`) === '1'; }
+
+  function currentProgramWeek(ww){
+    if(!ww || !ww.weeks) return null;
+    const today = todayStr();
+    const weeks = Object.values(ww.weeks).sort((a,b) => a.week_start.localeCompare(b.week_start));
+    return weeks.find(w => w.week_start <= today && today <= w.week_end)
+        || weeks.filter(w => w.week_start <= today).pop()
+        || weeks[0] || null;
+  }
+
+  function fmtRange(a, b){
+    const o = {month:'short', day:'numeric'};
+    const pa = new Date(a + 'T12:00:00'), pb = new Date(b + 'T12:00:00');
+    return pa.toLocaleDateString(undefined, o) + ' \u2013 ' + pb.toLocaleDateString(undefined, o);
+  }
+
+  function setRowsHtml(rows){
+    let last = null, out = '';
+    rows.forEach(r => {
+      if(r.label && r.label !== last){ out += `<tr class="grp"><td colspan="3">${escapeHtml(r.label)}</td></tr>`; }
+      last = r.label || null;
+      const sr = typeof r.sets === 'number'
+        ? (r.sets === 1 ? `${escapeHtml(String(r.reps))} rep${r.reps === 1 ? '' : 's'}` : `${r.sets} \u00d7 ${escapeHtml(String(r.reps))}`)
+        : `${escapeHtml(String(r.sets))} \u00b7 ${escapeHtml(String(r.reps))}${typeof r.reps === 'number' ? (r.reps === 1 ? ' rep' : ' reps') : ''}`;
+      out += `<tr><td>${sr}</td><td>${r.pct != null ? r.pct + '%' : '\u2014'}</td><td class="lb">${r.lb != null ? r.lb + ' lb' : '+5\u201310 lb'}</td></tr>`;
+    });
+    return out;
+  }
+
+  function renderWorkouts(w){
+    const el = document.getElementById('workoutsBody');
+    if(!w){
+      el.innerHTML = `<div class="card"><div class="empty"><span class="emoji">🗓️</span>No workouts generated yet. They're built every Saturday at 11:30 PM.</div></div>`;
+      return;
+    }
+    if(w.status !== 'active'){
+      el.innerHTML = `<div class="card"><div class="empty"><span class="emoji">🏁</span>${escapeHtml(w.message || 'No program this week.')}</div></div>`;
+      return;
+    }
+    const key = `lc.session.${w.week_start}`;
+    let sel = parseInt(store(key) || '0', 10);
+    if(!sel){ const next = w.sessions.find(x => !isDone(w, x.id)); sel = next ? next.id : 1; }
+
+    const draw = () => {
+      const s = w.sessions.find(x => x.id === sel) || w.sessions[0];
+      const done = isDone(w, s.id);
+      el.innerHTML = `
+        <div class="card">
+          <div class="wk-head">
+            <div>
+              <div class="t">Week ${w.week} of ${w.weeks_total} \u2014 ${escapeHtml(w.theme)}</div>
+              <div class="d">${fmtRange(w.week_start, w.week_end)} \u00b7 do sessions in order, any 4 days</div>
+            </div>
+            <span class="phase-tag">${w.sessions.filter(x => isDone(w, x.id)).length}/4</span>
+          </div>
+        </div>
+
+        <div class="chips">
+          ${w.sessions.map(x => `
+            <button class="chip ${x.id === sel ? 'active' : ''} ${isDone(w, x.id) ? 'done' : ''}" data-id="${x.id}">
+              <div class="n">${x.id}</div>
+              <div class="l">${escapeHtml(x.title.split('\u2014')[1] || '').trim()}</div>
+            </button>`).join('')}
+        </div>
+
+        <div class="card">
+          <div style="font-size:17px; font-weight:800;">${escapeHtml(s.title)}</div>
+          <div class="note" style="margin:2px 0 14px;">${escapeHtml(s.focus)}</div>
+          ${s.main.map(b => `
+            <div class="lift-block">
+              <div class="lift-head"><div class="nm">${escapeHtml(b.name)}</div><div class="rest">Rest ${escapeHtml(b.rest)}</div></div>
+              <table class="sets">
+                <thead><tr><th>Sets \u00d7 reps</th><th>%</th><th class="r">Weight</th></tr></thead>
+                <tbody>${setRowsHtml(b.rows)}</tbody>
+              </table>
+              ${b.note ? `<div class="note">${escapeHtml(b.note)}</div>` : ''}
+              ${b.record ? `<div class="record">Record \u2192 ${escapeHtml(b.record)}: ____</div>` : ''}
+            </div>`).join('')}
+        </div>
+
+        ${s.accessories.length ? `
+        <div class="card">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Accessories</div>
+          ${s.accessories.map(a => `<div class="workout-item"><div class="t">${escapeHtml(a.name)}</div><div class="m">${escapeHtml(a.scheme)}</div></div>`).join('')}
+        </div>` : ''}
+
+        <div class="card">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Finisher</div>
+          ${s.finisher.map(a => `<div class="workout-item"><div class="t">${escapeHtml(a.name)}</div><div class="m">${escapeHtml(a.scheme)}</div></div>`).join('')}
+        </div>
+
+        <button class="done-btn ${done ? 'on' : ''}" id="doneBtn">${done ? '\u2713 Session done' : 'Mark session done'}</button>
+
+        <div class="card" style="margin-top:12px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Swim \u00b7 bike \u00b7 run this week (2\u20133 sessions)</div>
+          ${w.conditioning.map(c => `<div class="workout-item"><div><div class="t">${escapeHtml(c.mode)}</div><div class="m">${escapeHtml(c.timing)}</div></div><div class="m" style="text-align:right; max-width:55%;">${escapeHtml(c.session)}</div></div>`).join('')}
+        </div>
+
+        <div class="card">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Rules</div>
+          <ul class="rules">${w.rules.map(r => `<li>${escapeHtml(r)}</li>`).join('')}</ul>
+          <div class="note" style="margin-top:10px;">Maxes: squat ${w.maxes_lb.squat} \u00b7 bench ${w.maxes_lb.bench} \u00b7 deadlift ${w.maxes_lb.deadlift} \u00b7 OHP ${w.maxes_lb.ohp} \u00b7 incline ${w.maxes_lb.incline} lb</div>
+        </div>`;
+
+      el.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { sel = +c.dataset.id; store(key, String(sel)); draw(); }));
+      document.getElementById('doneBtn').addEventListener('click', () => {
+        store(`lc.done.${w.week_start}.${s.id}`, isDone(w, s.id) ? null : '1');
+        draw();
+      });
+    };
+    draw();
   }
 
   init();
