@@ -498,5 +498,15 @@
     "carbs_g": 28,
     "fat_g": 4,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-03",
+    "time": "19:00",
+    "description": "0.5lb chicken breast, 2 servings pastina, 1 cup veggies",
+    "kcal": 715,
+    "protein_g": 67,
+    "carbs_g": 94,
+    "fat_g": 8,
+    "source": "claude-estimate"
   }
 ]
