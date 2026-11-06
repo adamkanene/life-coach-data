@@ -1065,15 +1065,15 @@
   function shareCardHtml(){
     if(!SUMMARY || !SUMMARY.text) return '';
     return `
-      <div class="card">
-        <div style="font-size:13px; font-weight:700;">Share your week — Week ${SUMMARY.week} summary</div>
+      <details class="card">
+        <summary style="font-size:13px; font-weight:700; cursor:pointer;">Weekly summary — Week ${SUMMARY.week}</summary>
         <div class="share-txt">${escapeHtml(SUMMARY.text)}</div>
         <div class="share-row">
           ${navigator.share ? '<button class="save-btn" id="shareBtn">Share…</button>' : ''}
           <button class="save-btn" id="copyBtn">Copy text</button>
         </div>
         <div class="note" id="shareMsg" style="text-align:center;"></div>
-      </div>`;
+      </details>`;
   }
   function wireShare(){
     const msgEl = document.getElementById('shareMsg');
@@ -1094,7 +1094,7 @@
       return;
     }
     if(w.status !== 'active'){
-      el.innerHTML = shareCardHtml() + `<div class="card"><div class="empty"><span class="emoji">🏁</span>${escapeHtml(w.message || 'No program this week.')}</div></div>`;
+      el.innerHTML = `<div class="card"><div class="empty"><span class="emoji">🏁</span>${escapeHtml(w.message || 'No program this week.')}</div></div>` + shareCardHtml();
       wireShare();
       return;
     }
@@ -1157,7 +1157,7 @@
       const pending = getPending();
       const hasTok = !!store('lc.gh.token');
 
-      el.innerHTML = shareCardHtml() + `
+      el.innerHTML = `
         <div class="card">
           <div class="wk-head">
             <div>
@@ -1215,7 +1215,7 @@
             : `<div class="note" style="margin-top:0;">To save sets to your lift log, paste a GitHub fine-grained token for life-coach-data (Contents: read and write). It's stored only in this browser.</div>
                <input class="in tok" id="tokIn" type="password" placeholder="github_pat_…" autocomplete="off">
                <button class="save-btn" id="tokSave" style="margin-top:8px;">Save token on this device</button>`}
-        </div>`;
+        </div>` + shareCardHtml();
 
       // --- events
       wireShare();
