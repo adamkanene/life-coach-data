@@ -92,7 +92,7 @@ def summarize(program, lift_log, food_log, profile, week_start):
         lines.append("⏳ 1 week until max-out day")
     else:
         lines.append("🎯 Max-out day is next!")
-    lines += ["", "See you next week 🫡"]
+    lines += ["", "See you next week 🫡", "", "— Delivered by Claude"]
 
     return {"week_start": week_start.isoformat(), "week_end": week_end.isoformat(), "week": idx,
             "weeks_total": total, "workouts": workouts, "best_lift": best,
