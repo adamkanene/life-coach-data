@@ -27,13 +27,19 @@ def e1rm(w, r):  # Epley
     return w * (1 + r / 30)
 
 
+def keytel_kcal(avg_hr, minutes, weight_lb, age):
+    """Gross kcal from average HR (Keytel 2005, male). Fallback when Strava has no calories."""
+    per_min = (-55.0969 + 0.6309 * avg_hr + 0.1988 * weight_lb * 0.4536 + 0.2017 * age) / 4.184
+    return max(per_min, 0) * minutes
+
+
 def fmt_range(a, b):
     if a.month == b.month:
         return f"{a:%b} {a.day}–{b.day}"
     return f"{a:%b} {a.day}–{b:%b} {b.day}"
 
 
-def summarize(program, lift_log, food_log, profile, week_start):
+def summarize(program, lift_log, food_log, health, profile, week_start):
     week_end = week_start + timedelta(days=6)
     start = date.fromisoformat(program["start_date"])
     idx = (week_start - start).days // 7 + 1
@@ -71,6 +77,20 @@ def summarize(program, lift_log, food_log, profile, week_start):
     phase = profile.get("current_phase") if profile else None
     protein_goal = profile["phases"][phase]["targets"]["protein_g"] if phase else None
 
+    # Calories burned = Strava activities this week; HR estimate only where Strava has none.
+    kcal_total, n_acts, n_est = 0, 0, 0
+    for day in health:
+        if not in_week(day.get("date", "")):
+            continue
+        for wo in day.get("workouts") or []:
+            n_acts += 1
+            if wo.get("kcal") is not None:
+                kcal_total += wo["kcal"]
+            elif wo.get("avg_hr") and wo.get("minutes") and profile:
+                kcal_total += keytel_kcal(wo["avg_hr"], wo["minutes"], profile["weight_lb"], profile["age"])
+                n_est += 1
+    kcal_total = round(kcal_total)
+
     weeks_left = max(total - idx, 0)
     lines = ["💪 Welcome to Adam's Weekly Workout Summary!",
              f"Week {idx} of {total} · {fmt_range(week_start, week_end)}", ""]
@@ -80,6 +100,12 @@ def summarize(program, lift_log, food_log, profile, week_start):
         lines.append(f"🔥 Best lift: {MAIN_LIFTS[best['exercise']]} {best['weight_lb']} × {best['reps']}{sets}")
     else:
         lines.append("🔥 Best lift: nothing logged this week")
+    if n_acts:
+        approx = "~" if n_est else ""
+        lines.append(f"⚡ Calories burned: {approx}{kcal_total:,} kcal across {n_acts} "
+                     f"activit{'y' if n_acts == 1 else 'ies'}")
+    else:
+        lines.append("⚡ Calories burned: no Strava activities this week")
     if avg_protein is not None:
         goal = f", goal {protein_goal}" if protein_goal else ""
         partial = f" · logged {days_logged} of 7 days" if days_logged < 7 else ""
@@ -98,6 +124,7 @@ def summarize(program, lift_log, food_log, profile, week_start):
             "weeks_total": total, "workouts": workouts, "best_lift": best,
             "avg_protein_g": avg_protein, "protein_goal_g": protein_goal, "protein_days_logged": days_logged,
             "weeks_until_max": weeks_left,
+            "kcal_burned": kcal_total, "strava_activities": n_acts, "kcal_estimated_activities": n_est,
             "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "text": "\n".join(lines)}
 
@@ -116,7 +143,7 @@ def main():
     if not (0 <= (ws - start).days // 7 < program["weeks_total"]):
         print(f"{ws} is outside the program block; no summary written.")
         return
-    s = summarize(program, load("lift-log.json", []), load("food-log.json", []), load("profile.json", None), ws)
+    s = summarize(program, load("lift-log.json", []), load("food-log.json", []), load("health-daily.json", []), load("profile.json", None), ws)
     out = load("weekly-summary.json", {"weeks": {}})
     out["weeks"][s["week_start"]] = s
     out["latest_week_start"] = s["week_start"]

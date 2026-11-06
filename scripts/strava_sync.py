@@ -35,7 +35,8 @@ DATA_PATH = os.path.join(
     "data",
     "health-daily.json",
 )
-LOOKBACK_DAYS = 8
+LOOKBACK_DAYS = int(os.environ.get("STRAVA_LOOKBACK_DAYS", "8"))
+DETAIL_URL = "https://www.strava.com/api/v3/activities/{id}"
 
 
 def fail(message):
@@ -123,6 +124,25 @@ def fetch_recent_activities(access_token):
         fail(f"Unexpected activities response (expected a list): {activities}")
 
     return activities
+
+
+def fill_calories(activities, access_token, known_kcal_ids):
+    """The list endpoint never includes `calories`; only the per-activity detail
+    endpoint does. Fetch detail for activities whose calories we don't have yet."""
+    headers = {"Authorization": f"Bearer {access_token}"}
+    fetched = 0
+    for a in activities:
+        if a.get("calories") is not None or a.get("id") in known_kcal_ids:
+            continue
+        try:
+            detail = http_get_json(DETAIL_URL.format(id=a["id"]), headers)
+        except SystemExit:
+            print(f"WARNING: could not fetch detail for activity {a.get('id')}; leaving kcal empty.")
+            continue
+        if isinstance(detail, dict) and detail.get("calories"):
+            a["calories"] = detail["calories"]
+        fetched += 1
+    return fetched
 
 
 def local_date_from_activity(activity):
@@ -237,6 +257,10 @@ def upsert(records, activities):
             w.get("strava_id") for w in record.get("workouts", []) if isinstance(w, dict)
         }
         if workout["strava_id"] in existing_ids:
+            # Backfill calories on workouts saved before detail fetching existed.
+            for w in record.get("workouts", []):
+                if w.get("strava_id") == workout["strava_id"] and w.get("kcal") is None and workout["kcal"] is not None:
+                    w["kcal"] = workout["kcal"]
             skipped_count += 1
             continue
 
@@ -255,6 +279,10 @@ def main():
     print(f"Fetched {len(activities)} activities from Strava (last {LOOKBACK_DAYS} days).")
 
     existing_records = load_existing_records()
+    known_kcal_ids = {w.get("strava_id") for r in existing_records if isinstance(r, dict)
+                      for w in r.get("workouts", []) if isinstance(w, dict) and w.get("kcal") is not None}
+    n = fill_calories(activities, access_token, known_kcal_ids)
+    print(f"Fetched calorie detail for {n} activit{'y' if n == 1 else 'ies'}.")
     original_json = json.dumps(existing_records, indent=2, sort_keys=False)
 
     updated_records, added_count, skipped_count = upsert(existing_records, activities)

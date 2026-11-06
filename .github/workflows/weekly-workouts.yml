@@ -22,6 +22,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Pull latest Strava activities (so Saturday's workouts count)
+        continue-on-error: true
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python scripts/strava_sync.py
+
       - name: Build shareable summary of the week that's ending
         run: python scripts/weekly_summary.py
 
@@ -32,7 +40,8 @@ jobs:
         run: |
           git config user.name "weekly-workouts-bot"
           git config user.email "weekly-workouts-bot@users.noreply.github.com"
-          git add data/weekly-workouts.json data/weekly-summary.json 2>/dev/null || git add data/weekly-workouts.json
+          git add data/weekly-workouts.json
+          for f in data/weekly-summary.json data/health-daily.json; do [ -f "$f" ] && git add "$f"; done
           if git diff --cached --quiet; then
             echo "No changes - skipping commit."
           else
