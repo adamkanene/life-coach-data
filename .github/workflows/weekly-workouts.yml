@@ -41,7 +41,7 @@ jobs:
           git config user.name "weekly-workouts-bot"
           git config user.email "weekly-workouts-bot@users.noreply.github.com"
           git add data/weekly-workouts.json
-          for f in data/weekly-summary.json data/health-daily.json; do [ -f "$f" ] && git add "$f"; done
+          for f in data/weekly-summary.json data/weekly-summary.txt data/health-daily.json; do git add -A -- "$f" 2>/dev/null || true; done
           if git diff --cached --quiet; then
             echo "No changes - skipping commit."
           else

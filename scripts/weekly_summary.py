@@ -15,6 +15,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "weekly-summary.json"
+TXT = DATA / "weekly-summary.txt"  # plain message for the iPhone Shortcut
 MAIN_LIFTS = {"squat": "Squat", "bench": "Bench", "deadlift": "Deadlift", "ohp": "OHP", "incline": "Incline bench"}
 
 
@@ -141,12 +142,14 @@ def main():
     start = date.fromisoformat(program["start_date"])
     if not (0 <= (ws - start).days // 7 < program["weeks_total"]):
         print(f"{ws} is outside the program block; no summary written.")
+        TXT.unlink(missing_ok=True)  # don't let the Shortcut resend an old week
         return
     s = summarize(program, load("lift-log.json", []), load("food-log.json", []), load("health-daily.json", []), load("profile.json", None), ws)
     out = load("weekly-summary.json", {"weeks": {}})
     out["weeks"][s["week_start"]] = s
     out["latest_week_start"] = s["week_start"]
     OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+    TXT.write_text(s["text"] + "\n")
     print(s["text"])
 
 
