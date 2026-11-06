@@ -528,5 +528,15 @@
     "carbs_g": 67,
     "fat_g": 22,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-06",
+    "time": "09:39",
+    "description": "2 eggs, Green Machine juice 8oz, 1 slice sourdough toast, Oikos vanilla yogurt",
+    "kcal": 530,
+    "protein_g": 42,
+    "carbs_g": 60,
+    "fat_g": 13,
+    "source": "claude-estimate"
   }
 ]
