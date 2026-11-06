@@ -102,10 +102,9 @@ def summarize(program, lift_log, food_log, health, profile, week_start):
         lines.append("🔥 Best lift: nothing logged this week")
     if n_acts:
         approx = "~" if n_est else ""
-        lines.append(f"⚡ Calories burned: {approx}{kcal_total:,} kcal across {n_acts} "
-                     f"activit{'y' if n_acts == 1 else 'ies'}")
+        lines.append(f"⚡ Calories burned: {approx}{kcal_total:,}")
     else:
-        lines.append("⚡ Calories burned: no Strava activities this week")
+        lines.append("⚡ Calories burned: 0")
     if avg_protein is not None:
         goal = f", goal {protein_goal}" if protein_goal else ""
         partial = f" · logged {days_logged} of 7 days" if days_logged < 7 else ""
