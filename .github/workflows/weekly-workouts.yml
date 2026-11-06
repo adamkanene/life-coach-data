@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Build shareable summary of the week that's ending
+        run: python scripts/weekly_summary.py
+
       - name: Generate next week's workouts
         run: python scripts/generate_week.py
 
@@ -29,10 +32,10 @@ jobs:
         run: |
           git config user.name "weekly-workouts-bot"
           git config user.email "weekly-workouts-bot@users.noreply.github.com"
-          if git diff --quiet -- data/weekly-workouts.json; then
+          git add data/weekly-workouts.json data/weekly-summary.json 2>/dev/null || git add data/weekly-workouts.json
+          if git diff --cached --quiet; then
             echo "No changes - skipping commit."
           else
-            git add data/weekly-workouts.json
             git commit -m "Weekly workouts: $(date -u +%Y-%m-%d)"
             git push
           fi
