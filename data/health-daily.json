@@ -1030,5 +1030,25 @@
     ],
     "resting_hr": null,
     "hrv": null
+  },
+  {
+    "date": "2026-11-07",
+    "sleep_hours": null,
+    "sleep_quality": null,
+    "active_kcal": null,
+    "resting_kcal": null,
+    "steps": null,
+    "workouts": [
+      {
+        "type": "Pickleball",
+        "minutes": 118,
+        "kcal": 1298,
+        "distance_km": null,
+        "avg_hr": 152,
+        "strava_id": 20898534365
+      }
+    ],
+    "resting_hr": null,
+    "hrv": null
   }
 ]

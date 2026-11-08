@@ -253,8 +253,326 @@
      ]
     }
    ]
+  },
+  "2026-11-08": {
+   "week_start": "2026-11-08",
+   "week_end": "2026-11-14",
+   "generated_at": "2026-11-08T12:08:08+00:00",
+   "week": 2,
+   "weeks_total": 8,
+   "theme": "Countdown",
+   "status": "active",
+   "maxes_lb": {
+    "squat": 295,
+    "bench": 225,
+    "deadlift": 315,
+    "ohp": 130,
+    "incline": 185
+   },
+   "rules": [
+    "Do the sessions in order: 1, 2, 3, 4. Finish all four before the next week starts.",
+    "Leave at least 48 hours between Session 1 and Session 3 (the two squat days).",
+    "Lift no more than 3 days in a row.",
+    "Rest: 90 s at 65% or below, 2 min at 70–80%, 2.5–3 min at 85% and above."
+   ],
+   "conditioning": [
+    {
+     "mode": "Swim",
+     "session": "20–30 min technique + easy aerobic sets",
+     "timing": "Day after a squat session"
+    },
+    {
+     "mode": "Bike",
+     "session": "30–45 min zone 2, or intervals",
+     "timing": "Intervals at least 24 h before Session 1 or 3"
+    },
+    {
+     "mode": "Run",
+     "session": "20–30 min easy",
+     "timing": "Not the day before a squat session"
+    }
+   ],
+   "sessions": [
+    {
+     "id": 1,
+     "title": "Session 1 — Squat A",
+     "focus": "Heavy squat + back day 1",
+     "main": [
+      {
+       "name": "Back squat — Countdown",
+       "lift": "squat",
+       "rows": [
+        {
+         "sets": 1,
+         "reps": 5,
+         "pct": 65,
+         "lb": 190
+        },
+        {
+         "sets": 1,
+         "reps": 4,
+         "pct": 75,
+         "lb": 220
+        },
+        {
+         "sets": 1,
+         "reps": 3,
+         "pct": 80,
+         "lb": 235
+        },
+        {
+         "sets": 1,
+         "reps": 2,
+         "pct": 85,
+         "lb": 250
+        },
+        {
+         "sets": 1,
+         "reps": 1,
+         "pct": 88,
+         "lb": 260
+        }
+       ],
+       "rest": "2–2.5 min",
+       "max_lb": 295
+      },
+      {
+       "name": "Pause squat",
+       "lift": "squat",
+       "rows": [
+        {
+         "sets": 3,
+         "reps": 3,
+         "pct": 60,
+         "lb": 175
+        }
+       ],
+       "rest": "2 min",
+       "note": "2 s pause at the bottom",
+       "max_lb": 295
+      }
+     ],
+     "accessories": [
+      {
+       "name": "A) Slow strict chin-up",
+       "scheme": "4 x 3-5"
+      },
+      {
+       "name": "B) BB bent-over row",
+       "scheme": "4 x 6"
+      }
+     ],
+     "finisher": [
+      {
+       "name": "Hanging knee raise",
+       "scheme": "3 x 10"
+      },
+      {
+       "name": "Cable crunch",
+       "scheme": "3 x 12"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "title": "Session 2 — Flat bench A",
+     "focus": "Heavy bench + arms",
+     "main": [
+      {
+       "name": "Bench press — Countdown",
+       "lift": "bench",
+       "rows": [
+        {
+         "sets": 1,
+         "reps": 5,
+         "pct": 65,
+         "lb": 145
+        },
+        {
+         "sets": 1,
+         "reps": 4,
+         "pct": 75,
+         "lb": 170
+        },
+        {
+         "sets": 1,
+         "reps": 3,
+         "pct": 80,
+         "lb": 180
+        },
+        {
+         "sets": 1,
+         "reps": 2,
+         "pct": 85,
+         "lb": 190
+        },
+        {
+         "sets": 1,
+         "reps": 1,
+         "pct": 88,
+         "lb": 200
+        }
+       ],
+       "rest": "2–2.5 min",
+       "max_lb": 225
+      }
+     ],
+     "accessories": [
+      {
+       "name": "A) Dips",
+       "scheme": "3 x 8-12"
+      },
+      {
+       "name": "B) BB curl",
+       "scheme": "3 x 10"
+      },
+      {
+       "name": "DB rear lateral",
+       "scheme": "3 x 15"
+      }
+     ],
+     "finisher": [
+      {
+       "name": "Bike intervals",
+       "scheme": "10 min: 8 x 30 s hard / 30 s easy"
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "title": "Session 3 — Squat B + deadlift",
+     "focus": "Squat volume/density, deadlift, back day 2",
+     "main": [
+      {
+       "name": "Back squat — Pressure Cooker #1",
+       "lift": "squat",
+       "rows": [
+        {
+         "sets": 1,
+         "reps": 3,
+         "pct": 55,
+         "label": "Warm-up",
+         "lb": 160
+        },
+        {
+         "sets": 1,
+         "reps": 3,
+         "pct": 67,
+         "label": "Warm-up",
+         "lb": 200
+        },
+        {
+         "sets": "Max in 10 min",
+         "reps": 3,
+         "pct": 75,
+         "label": "Test",
+         "lb": 220
+        }
+       ],
+       "rest": "as needed",
+       "note": "As many sets of 3 @75% as you can in 10 minutes. Clock starts on your first rep.",
+       "record": "Sets completed",
+       "max_lb": 295
+      },
+      {
+       "name": "Deadlift",
+       "lift": "deadlift",
+       "rows": [
+        {
+         "sets": 5,
+         "reps": 3,
+         "pct": 75,
+         "lb": 235
+        }
+       ],
+       "rest": "2 min",
+       "note": "No bouncing",
+       "max_lb": 315
+      }
+     ],
+     "accessories": [
+      {
+       "name": "A) Strict pull-up",
+       "scheme": "3 x 4-6"
+      },
+      {
+       "name": "B) Chest-supported machine row",
+       "scheme": "3 x 10"
+      }
+     ],
+     "finisher": [
+      {
+       "name": "Farmers walk",
+       "scheme": "4 x 30 yd"
+      },
+      {
+       "name": "Pallof press",
+       "scheme": "3 x 10/side"
+      }
+     ]
+    },
+    {
+     "id": 4,
+     "title": "Session 4 — OHP + incline",
+     "focus": "Overhead press, incline bench, shoulders and arms",
+     "main": [
+      {
+       "name": "Standing overhead press",
+       "lift": "ohp",
+       "rows": [
+        {
+         "sets": 4,
+         "reps": 5,
+         "pct": 75,
+         "lb": 100
+        }
+       ],
+       "rest": "2 min",
+       "max_lb": 130
+      },
+      {
+       "name": "Incline bench press",
+       "lift": "incline",
+       "rows": [
+        {
+         "sets": 5,
+         "reps": 6,
+         "pct": 70,
+         "lb": 130
+        }
+       ],
+       "rest": "2 min",
+       "max_lb": 185
+      }
+     ],
+     "accessories": [
+      {
+       "name": "A) DB lateral raise",
+       "scheme": "4 x 15"
+      },
+      {
+       "name": "B) Skullcrusher",
+       "scheme": "3 x 12"
+      },
+      {
+       "name": "Zottman curl",
+       "scheme": "3 x 10"
+      }
+     ],
+     "finisher": [
+      {
+       "name": "Dead bug",
+       "scheme": "3 x 10/side"
+      },
+      {
+       "name": "Side plank",
+       "scheme": "3 x 30 s/side"
+      }
+     ]
+    }
+   ]
   }
  },
  "program": "Squatober-style 4-day block",
- "latest_week_start": "2026-11-01"
+ "latest_week_start": "2026-11-08"
 }
