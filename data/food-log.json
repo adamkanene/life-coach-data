@@ -548,5 +548,15 @@
     "carbs_g": 55,
     "fat_g": 20,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-09",
+    "time": "13:00",
+    "description": "Bowl of tortellini soup, 100 cal Kind bar",
+    "kcal": 400,
+    "protein_g": 17,
+    "carbs_g": 49,
+    "fat_g": 16,
+    "source": "claude-estimate"
   }
 ]
