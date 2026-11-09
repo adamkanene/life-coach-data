@@ -538,5 +538,15 @@
     "carbs_g": 60,
     "fat_g": 13,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-09",
+    "time": "09:21",
+    "description": "2 eggs, cottage cheese serving, Green Machine juice 8oz, latte",
+    "kcal": 560,
+    "protein_g": 36,
+    "carbs_g": 55,
+    "fat_g": 20,
+    "source": "claude-estimate"
   }
 ]
