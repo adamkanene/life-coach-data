@@ -558,5 +558,15 @@
     "carbs_g": 49,
     "fat_g": 16,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-09",
+    "time": "19:00",
+    "description": "Bowl of tortellini soup, 2 pieces garlic bread, 0.3lb chicken breast",
+    "kcal": 800,
+    "protein_g": 61,
+    "carbs_g": 74,
+    "fat_g": 27,
+    "source": "claude-estimate"
   }
 ]
