@@ -568,5 +568,15 @@
     "carbs_g": 74,
     "fat_g": 27,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-10",
+    "time": "09:12",
+    "description": "Green Machine juice 8oz, 2 eggs, latte, Oikos yogurt cup (20g protein)",
+    "kcal": 610,
+    "protein_g": 44,
+    "carbs_g": 60,
+    "fat_g": 19,
+    "source": "claude-estimate"
   }
 ]
