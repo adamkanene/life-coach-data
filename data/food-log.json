@@ -578,5 +578,15 @@
     "carbs_g": 60,
     "fat_g": 19,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-10",
+    "time": "12:30",
+    "description": "Knorr pasta pack, jalapeno popper dip with Ritz crackers, Premier Protein shake (30g protein, 160 cal)",
+    "kcal": 890,
+    "protein_g": 46,
+    "carbs_g": 89,
+    "fat_g": 38,
+    "source": "claude-estimate"
   }
 ]
