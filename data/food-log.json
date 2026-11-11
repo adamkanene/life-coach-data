@@ -588,5 +588,15 @@
     "carbs_g": 89,
     "fat_g": 38,
     "source": "claude-estimate"
+  },
+  {
+    "date": "2026-11-10",
+    "time": "19:03",
+    "description": "Chicken pot pie, whole container (~2 servings, per label)",
+    "kcal": 930,
+    "protein_g": 25,
+    "carbs_g": 85,
+    "fat_g": 55,
+    "source": "label"
   }
 ]
