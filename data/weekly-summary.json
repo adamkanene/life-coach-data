@@ -22,7 +22,30 @@
    "kcal_estimated_activities": 0,
    "generated_at": "2026-11-08T12:08:08+00:00",
    "text": "💪 Welcome to Adam's Weekly Workout Summary!\nWeek 1 of 8 · Nov 1–7\n\n✅ Workouts: 4 of 4\n🔥 Best lift: Incline bench 115 × 12\n⚡ Calories burned: 2,449\n🥩 Avg protein: 98 g/day, goal 160 · logged 3 of 7 days\n⏳ 7 weeks until max-out day\n\nSee you next week 🫡\n\n— Delivered by Claude"
+  },
+  "2026-11-08": {
+   "week_start": "2026-11-08",
+   "week_end": "2026-11-14",
+   "week": 2,
+   "weeks_total": 8,
+   "workouts": 1,
+   "best_lift": {
+    "exercise": "deadlift",
+    "weight_lb": 245,
+    "reps": 3,
+    "sets": 5,
+    "pct_of_max": 86
+   },
+   "avg_protein_g": 114,
+   "protein_goal_g": 160,
+   "protein_days_logged": 2,
+   "weeks_until_max": 6,
+   "kcal_burned": 376,
+   "strava_activities": 1,
+   "kcal_estimated_activities": 0,
+   "generated_at": "2026-11-15T12:55:35+00:00",
+   "text": "💪 Welcome to Adam's Weekly Workout Summary!\nWeek 2 of 8 · Nov 8–14\n\n✅ Workouts: 1 of 4\n🔥 Best lift: Deadlift 245 × 3 (5 sets)\n⚡ Calories burned: 376\n🥩 Avg protein: 114 g/day, goal 160 · logged 2 of 7 days\n⏳ 6 weeks until max-out day\n\nSee you next week 🫡\n\n— Delivered by Claude"
   }
  },
- "latest_week_start": "2026-11-01"
+ "latest_week_start": "2026-11-08"
 }
